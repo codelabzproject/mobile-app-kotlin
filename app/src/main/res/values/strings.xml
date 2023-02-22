@@ -5,4 +5,6 @@
     <string name="password">Senha</string>
     <string name="forgot_password">Esqueci a senha</string>
     <string name="login">Entrar</string>
+    <string name="or_continue_with">Ou continue com</string>
+    <string name="do_you_want_to_connect_with_us_register">Deseja se conectar com a gente? Cadastrar-se</string>
 </resources>
