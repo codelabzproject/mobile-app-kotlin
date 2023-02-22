@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">mobile-app-kotlin</string>
+    <string name="app_name">Code Labz</string>
+    <string name="hello_welcome">Olá, seja bem vindo</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="forgot_password">Esqueci a senha</string>
+    <string name="login">Entrar</string>
 </resources>

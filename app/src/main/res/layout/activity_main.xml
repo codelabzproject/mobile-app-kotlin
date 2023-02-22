@@ -1,16 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="#343536"
+    android:gravity="top"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/my_button"
-        android:text="OPEN FLUTTER MODULE"/>
+    <!--    Botao para acessar modulo flutter -->
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:id="@+id/my_button"-->
+    <!--        android:text="OPEN FLUTTER MODULE"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_gravity="top"
+        android:background="#1A1A1B">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/logo_codelabz" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="190dp"
+                android:layout_gravity="center|bottom"
+                android:src="@drawable/feed_customizable" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@drawable/gradient"
+        android:gravity="top|center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/dosis_medium"
+                android:text="@string/hello_welcome"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+
+            <EditText
+                android:id="@+id/inputEmailLogin"
+                android:layout_width="324dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_input_login_email"
+                android:drawableStart="@android:drawable/sym_action_email"
+                android:drawablePadding="40dp"
+                android:drawableTint="#969696"
+                android:fontFamily="@font/dosis_regular"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#969696"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/inputSenhaLogin"
+                android:layout_width="324dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_input_login_senha"
+                android:drawableStart="@android:drawable/ic_secure"
+                android:drawableEnd="@android:drawable/ic_secure"
+                android:drawablePadding="50dp"
+                android:drawableTint="#969696"
+                android:fontFamily="@font/dosis_regular"
+                android:hint="@string/password"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="#969696"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dosis_extra_light"
+                android:layout_gravity="end"
+                android:text="@string/forgot_password"
+                android:textColor="#969696"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:text="@string/login"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/dosis_semi_bold"
+                android:textColor="@color/white"
+                android:background="@drawable/border_button_login"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>
