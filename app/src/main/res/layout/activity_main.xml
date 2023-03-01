@@ -15,11 +15,13 @@
     <!--        android:id="@+id/my_button"-->
     <!--        android:text="OPEN FLUTTER MODULE"/>-->
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:layout_gravity="top"
-        android:background="#1A1A1B">
+        android:background="#1A1A1B"
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="190dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center|bottom"
                 android:src="@drawable/feed_customizable" />
 
@@ -57,7 +59,7 @@
             android:gravity="top|center"
             android:orientation="vertical">
 
-        <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
@@ -65,63 +67,63 @@
                 android:fontFamily="@font/dosis_medium"
                 android:text="@string/hello_welcome"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="32sp" />
 
             <EditText
                 android:id="@+id/inputEmailLogin"
-                android:layout_width="324dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_input_login_email"
                 android:drawableStart="@android:drawable/sym_action_email"
-                android:drawablePadding="40dp"
+                android:drawablePadding="16dp"
                 android:drawableTint="#969696"
                 android:fontFamily="@font/dosis_regular"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:padding="16dp"
-                android:paddingLeft="15dp"
                 android:textColor="@color/white"
                 android:textColorHint="#969696"
-                android:textSize="25sp" />
+                android:textSize="16sp"
+                android:autofillHints="emailAddress" />
 
             <EditText
                 android:id="@+id/inputSenhaLogin"
-                android:layout_width="324dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_input_login_senha"
                 android:drawableStart="@android:drawable/ic_secure"
                 android:drawableEnd="@android:drawable/ic_secure"
-                android:drawablePadding="50dp"
+                android:drawablePadding="30dp"
                 android:drawableTint="#969696"
                 android:fontFamily="@font/dosis_regular"
                 android:hint="@string/password"
-                android:inputType="textEmailAddress"
-                android:padding="16dp"
-                android:paddingLeft="20dp"
+                android:inputType="textPassword"
+                android:padding="18dp"
                 android:textColor="@color/white"
                 android:textColorHint="#969696"
-                android:textSize="25sp" />
+                android:textSize="16sp"
+                android:autofillHints="password" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/dosis_extra_light"
                 android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/dosis_extra_light"
                 android:text="@string/forgot_password"
                 android:textColor="#969696"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button_login"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:text="@string/login"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="32dp"
+                android:background="@drawable/border_button_login"
                 android:fontFamily="@font/dosis_semi_bold"
-                android:textColor="@color/white"
-                android:background="@drawable/border_button_login"/>
+                android:text="@string/login"
+                android:textColor="@color/white" />
 
 
         </LinearLayout>
@@ -129,12 +131,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/dosis_extra_light"
             android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/dosis_extra_light"
             android:text="@string/do_you_want_to_connect_with_us_register"
             android:textColor="@color/white"
-            android:layout_marginTop="48dp"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,13 +154,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/dosis_extra_light"
                 android:layout_gravity="top|center"
-                android:text="@string/or_continue_with"
-                android:textColor="#969696"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textSize="20sp" />
+                android:fontFamily="@font/dosis_extra_light"
+                android:text="@string/or_continue_with"
+                android:textColor="#969696"
+                android:textSize="16sp" />
 
             <View
                 android:layout_width="90dp"
@@ -175,7 +177,6 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="30dp"
             android:src="@drawable/github_icon_login" />
-
     </LinearLayout>
 
 
