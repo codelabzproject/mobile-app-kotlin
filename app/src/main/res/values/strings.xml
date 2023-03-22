@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">mobile-app-kotlin</string>
+    <string name="app_name">Code Labz</string>
+    <string name="hello_welcome">Olá, seja bem vindo</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="forgot_password">Esqueci a senha</string>
+    <string name="login">Entrar</string>
+    <string name="or_continue_with">Ou continue com</string>
+    <string name="do_you_want_to_connect_with_us_register">Deseja se conectar com a gente? Cadastrar-se</string>
+    <string name="confirm_register">Ok</string>
+    <string name="name">Nome</string>
+    <string name="confirm_password">Confirme a Senha</string>
+    <string name="already_connected_with_us_login">Já está conectado com a gente? Login</string>
+    <string name="forget_your_password">Esqueceu a senha?</string>
+    <string name="we_will_send_you_a_temporary">Enviaremos uma temporaria para você</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
