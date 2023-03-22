@@ -33,5 +33,6 @@
     <color name="code_final_gradient_blue_semi_opaque">#CC1705A3</color>
     <color name="code_final_gradient_full_opaque">#801705A3</color>
 
+    <color name="code_grey_dark_model_normal">#343536</color>
 
 </resources>

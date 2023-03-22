@@ -22,6 +22,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val buttonRegisterPage = view.findViewById<TextView>(R.id.button_register_page)
         val buttonForgetPasswordPage = view.findViewById<TextView>(R.id.button_forget_password)
+        val buttonLoginPage = view.findViewById<TextView>(R.id.button_login)
 
         buttonRegisterPage.setOnClickListener {
             goToRegisterPage()
@@ -29,6 +30,10 @@ class LoginFragment : Fragment() {
 
         buttonForgetPasswordPage.setOnClickListener {
             goToForgetPasswordPage()
+        }
+
+        buttonLoginPage.setOnClickListener {
+            goToTimelineHomePage()
         }
     }
 
@@ -40,4 +45,7 @@ class LoginFragment : Fragment() {
         findNavController().navigate(R.id.action_loginFragment_to_forgetPasswordFragment)
     }
 
+    private fun goToTimelineHomePage() {
+        findNavController().navigate(R.id.action_loginFragment_to_timelineActivity)
+    }
 }
