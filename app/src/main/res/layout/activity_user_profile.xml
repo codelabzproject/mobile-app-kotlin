@@ -168,13 +168,34 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <include layout="@layout/fragment_card_timeline" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp">
 
-            <include layout="@layout/fragment_card_timeline" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lost_astronaut"/>
 
-            <include layout="@layout/fragment_card_timeline" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_no_post"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_no_post_to_share"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textAlignment="center"/>
 
-            <include layout="@layout/fragment_card_timeline" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
