@@ -8,7 +8,7 @@
         android:left="4dp"
         android:right="4dp"
         android:top="4dp" />
-    <stroke
+    <gradient
         android:width="2dp"
         android:color="#FF00FF"
         android:startColor="@color/code_initial_gradient_purple"
