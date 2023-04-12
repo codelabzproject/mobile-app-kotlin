@@ -30,4 +30,6 @@
     <string name="profile_bio">Sou o Cara do TI</string>
     <string name="profile_followed_Topics">Topicos seguidos</string>
     <string name="profile_total_topics">12 topicos</string>
+    <string name="profile_no_post">Você não possui postagens ainda...</string>
+    <string name="profile_no_post_to_share">Sinta-se a vontade pra compartilhar em nossa plataforma</string>
 </resources>
