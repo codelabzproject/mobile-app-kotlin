@@ -1,7 +1,9 @@
-package com.example.mobile_app_kotlin
+package com.example.mobile_app_kotlin.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mobile_app_kotlin.R
+
 //import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
