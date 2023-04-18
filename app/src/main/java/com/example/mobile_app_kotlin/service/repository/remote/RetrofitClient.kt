@@ -10,6 +10,7 @@ class RetrofitClient private constructor() {
 
     companion object {
         private lateinit var INSTANCE: Retrofit
+        private var token: String = ""
 
         private fun getRetrofitInstance(): Retrofit {
             val httpClient = OkHttpClient.Builder()
@@ -35,6 +36,10 @@ class RetrofitClient private constructor() {
 
         fun <T> getService(serviceClass: Class<T>): T {
             return getRetrofitInstance().create(serviceClass)
+        }
+
+        fun addHeaders(tokenValue: String) {
+            token = tokenValue
         }
     }
 //    companion object {

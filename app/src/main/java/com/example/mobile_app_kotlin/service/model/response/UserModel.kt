@@ -1,8 +1,11 @@
-package com.example.mobile_app_kotlin.service.model
+package com.example.mobile_app_kotlin.service.model.response
 
 import com.google.gson.annotations.SerializedName
 
 class UserModel {
+
+    @SerializedName("token")
+    var token: String = ""
 
     @SerializedName("idUser")
     var idUser: Int = 0

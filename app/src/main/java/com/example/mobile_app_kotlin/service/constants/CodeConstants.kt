@@ -8,8 +8,8 @@ class CodeConstants private constructor() {
     // SharedPreferences
     object SHARED {
         const val TOKEN_KEY = "tokenkey"
-        const val PERSON_KEY = "personkey"
-        const val PERSON_NAME = "personname"
+        const val USER_NAME = "username"
+        const val USER_AVATAR = "useravatar"
     }
 
     // Requisições API
@@ -20,6 +20,7 @@ class CodeConstants private constructor() {
 
     object HTTP {
         const val SUCCESS = 200
+        const val CREATED = 201
     }
 
     object BUNDLE {
