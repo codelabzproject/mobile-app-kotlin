@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/code_background_black"
     android:orientation="vertical"
-    tools:context=".activity_postagem_comentario">
+    tools:context=".view.PostExpandedActivity">
 
     <ScrollView
         android:layout_width="match_parent"

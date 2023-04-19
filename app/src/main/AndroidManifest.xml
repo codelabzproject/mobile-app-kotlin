@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Mobileappkotlin"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity_postagem_comentario"
+            android:name=".view.PostExpandedActivity"
             android:exported="false" />
         <activity
             android:name=".view.TimelineActivity"
