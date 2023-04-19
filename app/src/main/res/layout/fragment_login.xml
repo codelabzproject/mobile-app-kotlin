@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_login_page"
-    tools:context=".login.LoginFragment">
+    tools:context=".view.LoginFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -153,7 +153,6 @@
                         android:background="@drawable/gradient_row_left_bottom" />
 
                     <TextView
-                        android:id="@+id/button_register"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center"

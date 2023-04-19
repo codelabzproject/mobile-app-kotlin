@@ -7,7 +7,7 @@
     android:background="@color/code_background_black"
     android:gravity="top"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <fragment
         android:id="@+id/nav_host_fragment"
