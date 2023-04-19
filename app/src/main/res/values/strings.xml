@@ -32,4 +32,5 @@
     <string name="profile_total_topics">12 topicos</string>
     <string name="profile_no_post">Você não possui postagens ainda...</string>
     <string name="profile_no_post_to_share">Sinta-se a vontade pra compartilhar em nossa plataforma</string>
+    <string name="new_comment">Adicione um comentário...</string>
 </resources>
