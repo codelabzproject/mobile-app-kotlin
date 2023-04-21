@@ -40,4 +40,9 @@
 
     <string name="new_comment">Adicione um comentário...</string>
     <string name="button_comment">Publicar</string>
+
+    <string name="new_post">Adicione o titulo ...</string>
+    <string name="new_desc">Discorra sobre a questão que você quer tratar...</string>
+
+
 </resources>

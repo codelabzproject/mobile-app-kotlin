@@ -92,7 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/code_grey_full_opacity"
-        android:backgroundTint="@color/code_grey_full_opacity"
+        android:backgroundTint="@color/code_grey_opacity"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
