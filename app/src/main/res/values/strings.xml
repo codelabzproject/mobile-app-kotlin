@@ -39,4 +39,5 @@
     <string name="ERROR_INTERNET_CONNECTION">Conexão à internet necessária para uso da applicação.</string>
 
     <string name="new_comment">Adicione um comentário...</string>
+    <string name="button_comment">Publicar</string>
 </resources>
