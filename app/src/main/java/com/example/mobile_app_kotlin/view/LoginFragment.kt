@@ -86,7 +86,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun observe() {
-        viewModel.login.observe(this) {
+        viewModel.login.observe(viewLifecycleOwner) {
             if (it.status()) {
                 findNavController().navigate(R.id.action_loginFragment_to_timelineActivity)
             } else {
@@ -95,7 +95,7 @@ class LoginFragment : Fragment() {
             }
         }
 
-        viewModel.loggedUser.observe(this) {
+        viewModel.loggedUser.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().navigate(R.id.action_loginFragment_to_timelineActivity)
             }

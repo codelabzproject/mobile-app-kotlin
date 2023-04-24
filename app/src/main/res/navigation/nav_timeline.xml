@@ -9,5 +9,14 @@
         android:id="@+id/timelineFragment"
         android:name="com.example.mobile_app_kotlin.view.HomeFragment"
         android:label="fragment_timeline"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_timelineFragment_to_postExpandedActivity"
+            app:destination="@id/postExpandedActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/postExpandedActivity"
+        android:name="com.example.mobile_app_kotlin.view.PostExpandedActivity"
+        android:label="activity_postagem_comentario"
+        tools:layout="@layout/activity_postagem_comentario" />
 </navigation>
