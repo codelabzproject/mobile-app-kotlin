@@ -35,4 +35,6 @@
 
     <color name="code_grey_dark_model_normal">#343536</color>
 
+    <color name="code_yellow">#FFD500</color>
+
 </resources>
