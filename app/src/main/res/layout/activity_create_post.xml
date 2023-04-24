@@ -145,6 +145,8 @@
                 <EditText
                     android:layout_width="345dp"
                     android:layout_height="match_parent"
+                    android:gravity="start"
+                    android:padding="16dp"
                     android:background="@color/code_background_black"
                     android:hint="@string/new_desc"
                     android:textColor="@color/code_white_normal"
