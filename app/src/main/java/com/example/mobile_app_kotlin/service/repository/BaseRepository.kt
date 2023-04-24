@@ -24,7 +24,9 @@ open class BaseRepository(val context: Context) {
                 if (response.code() == CodeConstants.HTTP.SUCCESS || response.code() == CodeConstants.HTTP.CREATED) {
                     response.body()?.let { listener.onSuccess(it) }
                 } else {
+//                    listener.onFailure(failResponse(response.message()))
 //                    listener.onFailure(failResponse(response.errorBody()!!.string()))
+
                 }
             }
 

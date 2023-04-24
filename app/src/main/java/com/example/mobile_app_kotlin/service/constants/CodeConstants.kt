@@ -25,7 +25,7 @@ class CodeConstants private constructor() {
 
     object BUNDLE {
         const val TASKID = "taskid"
-        const val TASKFILTER = "taskfilter"
+        const val CODEFILTER = "codefilter"
     }
 
     // Filtro de tarefas
