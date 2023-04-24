@@ -33,6 +33,10 @@
     <string name="profile_no_post">Você não possui postagens ainda...</string>
     <string name="profile_no_post_to_share">Sinta-se a vontade pra compartilhar em nossa plataforma</string>
 
+    <!-- Strings related to Topic -->
+    <string name="topics_followed">Técnologias seguidas</string>
+    <string name="topics">Técnologias</string>
+
     <!-- Strings related to Retrofit Connection -->
     <string name="ERROR_UNEXPECTED">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>
     <string name="ERROR_LOAD_TASK">Erro ao carregar a tarefa.</string>
