@@ -8,130 +8,153 @@
     android:orientation="vertical"
     tools:context=".view.HomeFragment">
 
-    <ScrollView
+    /
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="110dp"
+            android:background="@color/code_background_black">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/logo_codelabz" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:background="@color/code_background_black">
+                android:layout_width="200dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_card_perfil_timeline">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|bottom"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:src="@drawable/logo_codelabz" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:text="Apelido_da_pessoa"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/icon_arrow_down"
+                    tools:ignore="RtlHardcoded" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:layout_width="148dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/border_card_perfil_timeline"
+                android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/border_card_perfil_timeline">
+                    android:layout_marginStart="4dp"
+                    android:text="Veja tópicos em alta"
+                    android:textColor="@color/code_grey_normal"
+                    android:textSize="10sp" />
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/logo_codelabz" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="4dp"
-                        android:text="Apelido_da_pessoa"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="12dp"
-                        android:src="@drawable/icon_arrow_down"
-                        tools:ignore="RtlHardcoded" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="148dp"
-                    android:layout_height="48dp"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/border_card_perfil_timeline"
-                    android:gravity="center">
+                    android:layout_marginLeft="8dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/icon_search" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="4dp"
-                        android:text="Veja tópicos em alta"
-                        android:textColor="@color/code_grey_normal"
-                        android:textSize="10sp" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="8dp"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/icon_search" />
+        </LinearLayout>
 
-                </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/code_background_full_black"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/code_background_full_black"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </LinearLayout>
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_all_posts"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="1"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/fragment_card_timeline" />
 
-                    <include layout="@layout/fragment_card_timeline"/>
+                <!--                <androidx.recyclerview.widget.RecyclerView-->
+                <!--                    android:id="@+id/recycler_all_posts"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
-                    <!--                    <androidx.recyclerview.widget.RecyclerView-->
-<!--                        android:id="@+id/listPosts"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        app:spanCount="1"-->
-<!--                        tools:itemCount="7"-->
-<!--                        tools:listitem="@layout/fragment_card_timeline" />-->
+                <!--                    <include layout="@layout/fragment_card_timeline"/>-->
 
 
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
-    </ScrollView>
+    <!--    </ScrollView>-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_new_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/button_add_new_post"
+        android:src="@drawable/add_post_icon"
+        android:tint="@color/white"
+        app:backgroundTint="@color/code_purple_normal"
+        app:borderWidth="0dp"
+        app:maxImageSize="32dp" />
 
 
 </FrameLayout>
