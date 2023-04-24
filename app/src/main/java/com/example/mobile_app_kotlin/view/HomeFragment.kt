@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
 
         observe()
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -86,15 +86,14 @@ class HomeFragment : Fragment() {
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 
     private fun observe() {
         viewModel.posts.observe(viewLifecycleOwner) {
             adapter.updatePosts(it)
-            adapter.notifyDataSetChanged()
         }
 
 //        viewModel.delete.observe(viewLifecycleOwner) {

@@ -9,7 +9,7 @@ class CodeViewHolder(private val itemBinding: FragmentCardTimelineBinding, val l
     RecyclerView.ViewHolder(itemBinding.root) {
 
     /**
-     * Atribui valores aos elementos de interface e também eventos
+     * Atribui valores aos elementos de interface
      */
     fun bindData(postModel: PostModel) {
 
