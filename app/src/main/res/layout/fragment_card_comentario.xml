@@ -104,12 +104,12 @@
                         android:gravity="bottom|start"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginRight="5dp"
-                            android:src="@drawable/heart_like_icon" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginTop="12dp"-->
+<!--                            android:layout_marginRight="5dp"-->
+<!--                            android:src="@drawable/heart_like_icon" />-->
 
                         <TextView
                             android:layout_width="wrap_content"

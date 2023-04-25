@@ -9,5 +9,26 @@
         android:id="@+id/timelineFragment"
         android:name="com.example.mobile_app_kotlin.view.HomeFragment"
         android:label="fragment_timeline"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_timelineFragment_to_postExpandedFragment"
+            app:destination="@id/postExpandedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/postExpandedFragment"
+        android:name="com.example.mobile_app_kotlin.view.PostExpandedFragment"
+        android:label="fragment_post_expanded"
+        tools:layout="@layout/fragment_post_expanded" >
+        <action
+            android:id="@+id/action_postExpandedFragment_to_timelineFragment"
+            app:destination="@id/timelineFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+    </fragment>
 </navigation>

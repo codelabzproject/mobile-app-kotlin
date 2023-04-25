@@ -1,8 +1,12 @@
 package com.example.mobile_app_kotlin.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -16,6 +20,7 @@ import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
+    private val DRAWABLE_RIGHT = 2 // declarando a constante como variável global
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,11 +32,29 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val buttonRegisterPage = view.findViewById<TextView>(R.id.button_register_page)
         val buttonForgetPasswordPage = view.findViewById<TextView>(R.id.button_forget_password)
         val buttonLoginPage = view.findViewById<TextView>(R.id.button_login)
+        val inputSenhaLogin = view.findViewById<EditText>(R.id.inputSenhaLogin)
+
+        inputSenhaLogin.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (inputSenhaLogin.right - inputSenhaLogin.compoundDrawables[DRAWABLE_RIGHT].bounds.width())) {
+                    if (inputSenhaLogin.transformationMethod is PasswordTransformationMethod) {
+                        inputSenhaLogin.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        inputSenhaLogin.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_locked, 0, R.drawable.icon_visibility_on, 0)
+                    } else {
+                        inputSenhaLogin.transformationMethod = PasswordTransformationMethod.getInstance()
+                        inputSenhaLogin.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_locked, 0, R.drawable.icon_visibility_off, 0)
+                    }
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
 
         buttonRegisterPage.setOnClickListener {
             goToRegisterPage()
@@ -63,7 +86,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun observe() {
-        viewModel.login.observe(this) {
+        viewModel.login.observe(viewLifecycleOwner) {
             if (it.status()) {
                 findNavController().navigate(R.id.action_loginFragment_to_timelineActivity)
             } else {
@@ -72,7 +95,7 @@ class LoginFragment : Fragment() {
             }
         }
 
-        viewModel.loggedUser.observe(this) {
+        viewModel.loggedUser.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().navigate(R.id.action_loginFragment_to_timelineActivity)
             }
