@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RetrofitClient private constructor() {
 
@@ -23,10 +24,11 @@ class RetrofitClient private constructor() {
                         .build()
                     chain.proceed(request)
                 }
+                .callTimeout(30, TimeUnit.SECONDS)
 
             if (!::INSTANCE.isInitialized) {
                 INSTANCE = Retrofit.Builder()
-                    .baseUrl("http://172.16.0.209:8080/")
+                    .baseUrl("http://10.18.7.76:8080/")
                     .client(httpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

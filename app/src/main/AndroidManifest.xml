@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Mobileappkotlin"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.PostExpandedActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.TimelineActivity"
             android:exported="false" />
         <activity

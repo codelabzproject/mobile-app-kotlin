@@ -21,6 +21,7 @@ class CodeConstants private constructor() {
     object HTTP {
         const val SUCCESS = 200
         const val CREATED = 201
+        const val BADREQUEST = 404
     }
 
     object BUNDLE {

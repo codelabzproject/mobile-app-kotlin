@@ -42,4 +42,14 @@ class UserRepository(context: Context) : BaseRepository(context) {
 
         executeCall(remote.createUser(userRequest), listener)
     }
+
+    fun recoveryPassword(email: String, listener: APIListener<String>) {
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        val request = mapOf("email" to email)
+        executeCall(remote.recoveryPassword(request), listener)
+    }
 }
