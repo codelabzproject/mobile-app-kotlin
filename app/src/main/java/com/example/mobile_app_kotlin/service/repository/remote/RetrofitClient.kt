@@ -28,7 +28,7 @@ class RetrofitClient private constructor() {
 
             if (!::INSTANCE.isInitialized) {
                 INSTANCE = Retrofit.Builder()
-                    .baseUrl("http://10.18.7.76:8080/")
+                    .baseUrl("http://backend-codelabz.duckdns.org:30080/")
                     .client(httpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

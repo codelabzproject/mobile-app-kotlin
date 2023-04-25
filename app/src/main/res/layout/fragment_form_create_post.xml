@@ -168,7 +168,7 @@
             </FrameLayout>
 
             <Button
-                android:id="@+id/button_public"
+                android:id="@+id/button_create_post"
                 android:layout_width="100dp"
                 android:layout_height="38dp"
                 android:layout_marginLeft="280dp"

@@ -41,6 +41,23 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    fun createPost() {
+//        taskFilter = filter
+
+        postRepository.createPost(object : APIListener<PostModel> {
+            override fun onSuccess(result: PostModel) {
+//                result.forEach {
+//                    it.content = postRepository.getPosts(it.content)
+//                }
+//                _posts.value = result
+            }
+
+            override fun onFailure(message: String) {}
+        }
+        )
+
+    }
+
 //        val listener = object : APIListener<List<PostModel>> {
 //            override fun onSuccess(result: List<PostModel>) {
 //                result.forEach {

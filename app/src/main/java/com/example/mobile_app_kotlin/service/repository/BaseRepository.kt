@@ -20,11 +20,11 @@ open class BaseRepository(val context: Context) {
     }
 
     fun <T> executeCall(call: Call<T>, listener: APIListener<T>) {
-         call.enqueue(object : Callback<T> {
+        call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.code() == CodeConstants.HTTP.SUCCESS || response.code() == CodeConstants.HTTP.CREATED) {
                     response.body()?.let { listener.onSuccess(it) }
-                } else if (response.code() == CodeConstants.HTTP.BADREQUEST){
+                } else if (response.code() == CodeConstants.HTTP.BADREQUEST) {
                     Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT).show()
                 } else {
 //                    listener.onFailure(failResponse(response.message()))

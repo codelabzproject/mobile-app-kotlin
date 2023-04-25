@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
@@ -74,6 +75,7 @@ class HomeFragment : Fragment() {
 
         // Adiciona um listener para o evento de clique no botão
         fabButton.setOnClickListener {
+            findNavController().navigate(R.id.action_timelineFragment_to_createPostActivity)
 
             // Faça o que desejar ao clicar no botão
             Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
