@@ -48,5 +48,8 @@
     <string name="title_post">Adicione o titulo...</string>
     <string name="public_post">Publicar</string>
     <string name="button_add_new_post">Botão para adicionar nova postagem</string>
+    <string name="apelido_da_pessoa">Apelido_da_pessoa</string>
+    <string name="profilepicture">ProfilePicture</string>
+    <string name="settings_profile_button">settings profile button</string>
 
 </resources>

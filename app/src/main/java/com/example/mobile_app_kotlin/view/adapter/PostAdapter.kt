@@ -6,20 +6,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_app_kotlin.databinding.FragmentCardTimelineBinding
 import com.example.mobile_app_kotlin.service.listener.CodeListener
 import com.example.mobile_app_kotlin.service.model.response.PostModel
-import com.example.mobile_app_kotlin.view.viewholder.CodeViewHolder
+import com.example.mobile_app_kotlin.view.viewholder.PostViewHolder
 
-class CodeAdapter : RecyclerView.Adapter<CodeViewHolder>() {
+class PostAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
     private var listPosts: List<PostModel> = arrayListOf()
     private lateinit var listener: CodeListener
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CodeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemBinding = FragmentCardTimelineBinding.inflate(inflater, parent, false)
-        return CodeViewHolder(itemBinding, listener)
+        return PostViewHolder(itemBinding, listener)
     }
 
-    override fun onBindViewHolder(holder: CodeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bindData(listPosts[position])
     }
 

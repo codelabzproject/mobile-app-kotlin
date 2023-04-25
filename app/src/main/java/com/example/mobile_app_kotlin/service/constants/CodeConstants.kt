@@ -7,9 +7,9 @@ class CodeConstants private constructor() {
 
     // SharedPreferences
     object SHARED {
-        const val TOKEN_KEY = "tokenkey"
         const val USER_NAME = "username"
         const val USER_AVATAR = "useravatar"
+        const val NICK_NAME = "nickname"
     }
 
     // Requisições API

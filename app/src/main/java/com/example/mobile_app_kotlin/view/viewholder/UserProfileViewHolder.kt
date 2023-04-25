@@ -1,22 +1,21 @@
 package com.example.mobile_app_kotlin.view.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobile_app_kotlin.databinding.FragmentCardTimelineBinding
+import com.example.mobile_app_kotlin.databinding.FragmentUserProfileBinding
 import com.example.mobile_app_kotlin.service.listener.CodeListener
-import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.UserModel
 
-class CodeViewHolder(private val itemBinding: FragmentCardTimelineBinding, val listener: CodeListener) :
+class UserProfileViewHolder(private val itemBinding: FragmentUserProfileBinding, val listener: CodeListener) :
     RecyclerView.ViewHolder(itemBinding.root) {
 
     /**
      * Atribui valores aos elementos de interface
      */
-    fun bindData(postModel: PostModel) {
+    fun bindData(userModel: UserModel) {
 
-        itemBinding.titlePost.text = postModel.title
-        itemBinding.contentPost.text = postModel.content
-        itemBinding.commentsPosts.text = postModel.comments.toString()
-        itemBinding.liskes.text = postModel.points.toString()
+        itemBinding.nameProfilePage.text = userModel.name
+        itemBinding.usernameProfilePage.text = userModel.nickname
+        itemBinding.bioProfilePage.text = userModel.about
 
 //        itemBinding.liskes.text = postModel.points.toString()
 //        itemBinding.commentsPosts.text = postModel.comments.toString()

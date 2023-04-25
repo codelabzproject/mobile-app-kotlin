@@ -1,33 +1,24 @@
 package com.example.mobile_app_kotlin.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
-import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
+import com.example.mobile_app_kotlin.databinding.FragmentUserProfileBinding
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.CodeListener
-import com.example.mobile_app_kotlin.view.adapter.PostAdapter
-import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
-import com.example.mobile_app_kotlin.viewmodel.PostViewModel
+import com.example.mobile_app_kotlin.view.adapter.UserAdapter
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class HomeFragment : Fragment() {
-    private lateinit var loginViewModel: LoginViewModel
+class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
-    private lateinit var postViewModel: PostViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = PostAdapter()
+    private val adapter = UserAdapter()
 //    private var taskFilter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,13 +29,11 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
 
-        binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
-        binding.recyclerAllPosts.adapter = adapter
+//        binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
+//        binding.recyclerAllPosts.adapter = adapter
 
 //        taskFilter = requireArguments().getInt(CodeConstants.BUNDLE.CODEFILTER, 0)
 
@@ -71,36 +60,20 @@ class HomeFragment : Fragment() {
         }
         adapter.attachListener(listener)
 
-        loginViewModel.loadUserName()
+//        userViewModel.loadUserName()
 
         observe()
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val fabButton = view.findViewById<FloatingActionButton>(R.id.button_add_new_post)
-
-        val profileCard = view.findViewById<LinearLayout>(R.id.profile_home_resumed)
-
-        // Adiciona um listener para o evento de clique no botão
-        fabButton.setOnClickListener {
-            findNavController().navigate(R.id.action_timelineFragment_to_createPostActivity)
-
-            // Faça o que desejar ao clicar no botão
-//            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
-        }
-
-        profileCard.setOnClickListener {
-            findNavController().navigate(R.id.action_timelineFragment_to_userProfileFragment)
-            postViewModel.getPosts()
-        }
     }
 
     override fun onResume() {
         super.onResume()
-        postViewModel.getPosts()
+        userViewModel.getUser(1)
     }
 
 
@@ -110,12 +83,8 @@ class HomeFragment : Fragment() {
 //    }
 
     private fun observe() {
-        loginViewModel.name.observe(viewLifecycleOwner) {
-            view?.findViewById<TextView>(R.id.username_user)?.text ?: it
-        }
-
-        postViewModel.posts.observe(viewLifecycleOwner) {
-            adapter.updatePosts(it)
+        userViewModel.user.observe(viewLifecycleOwner) {
+            adapter.updateUser(it)
         }
 
 //        viewModel.delete.observe(viewLifecycleOwner) {

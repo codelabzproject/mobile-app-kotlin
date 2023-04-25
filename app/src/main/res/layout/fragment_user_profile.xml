@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
+    android:layout_height="match_parent"
+    tools:context=".view.UserProfileFragment">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +59,8 @@
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/profile_picture" />
+                        android:src="@drawable/profile_picture"
+                        android:contentDescription="@string/profilepicture" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -65,6 +68,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/name_profile_page"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
@@ -74,6 +78,7 @@
                             android:textSize="25sp" />
 
                         <TextView
+                            android:id="@+id/username_profile_page"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
@@ -107,6 +112,7 @@
                             android:paddingLeft="9dp">
 
                             <TextView
+                                android:id="@+id/bio_profile_page"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -131,7 +137,8 @@
                             android:layout_height="56dp"
                             android:layout_gravity="center"
                             android:background="@color/code_background_black"
-                            android:src="@drawable/icon_config" />
+                            android:src="@drawable/icon_config"
+                            android:contentDescription="@string/settings_profile_button" />
                     </FrameLayout>
                 </LinearLayout>
 
@@ -159,6 +166,7 @@
                             android:textSize="20sp" />
 
                         <TextView
+                            android:id="@+id/topico_qtd_profile_page"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/profile_total_topics"
@@ -199,4 +207,4 @@
         </LinearLayout>
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class PostRepository(context: Context): BaseRepository(context) {
 
-    private val remote = RetrofitClient.getService(PostService::class.java)
+    private val remote = RetrofitClient.getService(PostService::class.java, context)
 
     fun getPosts(listener: APIListener<List<PostModel>>) {
 
