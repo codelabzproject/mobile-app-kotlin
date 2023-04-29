@@ -14,6 +14,7 @@
 
     <color name="code_grey_normal">#969696</color>
     <color name="code_grey_semi_opacity">#CC969696</color>
+    <color name="code_grey_text">#818384</color>
     <color name="code_grey_opacity">#80969696</color>
     <color name="code_grey_full_opacity">#2E969696</color>
 
