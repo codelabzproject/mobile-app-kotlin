@@ -41,4 +41,16 @@
     <string name="ERROR_UNEXPECTED">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>
     <string name="ERROR_LOAD_TASK">Erro ao carregar a tarefa.</string>
     <string name="ERROR_INTERNET_CONNECTION">Conexão à internet necessária para uso da applicação.</string>
+
+    <!-- Strings related Comments Page -->
+    <string name="new_comment">Adicione um comentário...</string>
+    <string name="button_comment">Publicar</string>
+
+    <!-- Strings related Create Post -->
+    <string name="spinner_prompt">Escolha um tópico</string>
+    <string name="content_post">Discorra sobre a questão que você quer tratar...</string>
+    <string name="title_post">Adicione o titulo...</string>
+    <string name="public_post">Publicar</string>
+    <string name="button_add_new_post">Botão para adicionar nova postagem</string>
+
 </resources>

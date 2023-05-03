@@ -21,4 +21,9 @@ interface LoginService {
     fun createUser(
         @Body userRequest: UserRequest,
     ): Call<UserModel>
+
+    @POST("users/password-recovery")
+    fun recoveryPassword(
+        @Body request: Map<String, String>
+    ): Call<String>
 }
