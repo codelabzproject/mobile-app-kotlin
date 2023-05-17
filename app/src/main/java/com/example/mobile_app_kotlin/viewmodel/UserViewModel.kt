@@ -14,7 +14,7 @@ import com.example.mobile_app_kotlin.service.repository.UserRepository
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = UserRepository(application.applicationContext)
-    private val securityPreferences = SecurityPreferences(application.applicationContext)
+    val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private val _user = MutableLiveData<UserModel>()
     val user: LiveData<UserModel> = _user
@@ -25,10 +25,6 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     fun getUser(idUser: Int) {
         userRepository.getUserProfile(idUser, object : APIListener<UserModel> {
             override fun onSuccess(result: UserModel) {
-                securityPreferences.store(CodeConstants.SHARED.USER_NAME, result.name)
-                securityPreferences.store(CodeConstants.SHARED.USER_AVATAR, result.avatar)
-                securityPreferences.store(CodeConstants.SHARED.NICK_NAME, result.nickname)
-
                 _user.value = result
             }
 

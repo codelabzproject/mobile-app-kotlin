@@ -36,6 +36,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 securityPreferences.store(CodeConstants.SHARED.USER_NAME, result.name)
                 securityPreferences.store(CodeConstants.SHARED.USER_AVATAR, result.avatar)
                 securityPreferences.store(CodeConstants.SHARED.NICK_NAME, result.nickname)
+                securityPreferences.store(CodeConstants.SHARED.USER_ID, result.idUser.toString())
 
                 _login.value = ValidationModel()
             }
@@ -48,7 +49,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun loadUserName() {
-        _name.value = securityPreferences.get(CodeConstants.SHARED.USER_NAME)
+        _name.value = securityPreferences.get(CodeConstants.SHARED.NICK_NAME)
     }
 
 

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.APIListener
 import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.ValidationModel
@@ -18,11 +17,16 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     private val _posts = MutableLiveData<List<PostModel>>()
     val posts: LiveData<List<PostModel>> = _posts
 
+    private val _post = MutableLiveData<PostModel>()
+    val post: LiveData<PostModel> = _post
+
     private val _delete = MutableLiveData<ValidationModel>()
     val delete: LiveData<ValidationModel> = _delete
 
     private val _status = MutableLiveData<ValidationModel>()
     val status: LiveData<ValidationModel> = _status
+
+    private val selectedPost: MutableLiveData<PostModel> = MutableLiveData()
 
     fun getPosts() {
 //        taskFilter = filter
@@ -33,6 +37,23 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 //                    it.content = postRepository.getPosts(it.content)
 //                }
                 _posts.value = result
+            }
+
+            override fun onFailure(message: String) {}
+        }
+        )
+
+    }
+
+    fun getPostById(idPost: Int) {
+//        taskFilter = filter
+
+        postRepository.getPostById(idPost, object : APIListener<PostModel> {
+            override fun onSuccess(result: PostModel) {
+//                result.forEach {
+//                    it.content = postRepository.getPosts(it.content)
+//                }
+                _post.value = result
             }
 
             override fun onFailure(message: String) {}
@@ -57,6 +78,17 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         )
 
     }
+
+        fun setSelectedPost(post: PostModel) {
+            selectedPost.value = post
+        }
+
+        fun getSelectedPost(): LiveData<PostModel> {
+            return selectedPost
+        }
+
+        // Restante do código do ViewModel
+
 
 //        val listener = object : APIListener<List<PostModel>> {
 //            override fun onSuccess(result: List<PostModel>) {

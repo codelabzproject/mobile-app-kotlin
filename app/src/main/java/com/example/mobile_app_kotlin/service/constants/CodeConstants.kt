@@ -10,6 +10,7 @@ class CodeConstants private constructor() {
         const val USER_NAME = "username"
         const val USER_AVATAR = "useravatar"
         const val NICK_NAME = "nickname"
+        const val USER_ID = "userid"
     }
 
     // Requisições API

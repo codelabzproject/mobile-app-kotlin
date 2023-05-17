@@ -33,4 +33,14 @@ class PostRepository(context: Context): BaseRepository(context) {
 
         executeCall(remote.createPost(post), listener)
     }
+
+    fun getPostById(idPost: Int, listener: APIListener<PostModel>) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+        
+        executeCall(remote.getPostById(idPost), listener)
+    }
 }

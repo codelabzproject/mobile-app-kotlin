@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mobile_app_kotlin.R
@@ -17,7 +18,6 @@ class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
-
     private val adapter = UserAdapter()
 //    private var taskFilter = 0
 
@@ -73,7 +73,10 @@ class UserProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        userViewModel.getUser(1)
+        userViewModel.getUser(
+            userViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
+        )
+
     }
 
 
@@ -83,10 +86,22 @@ class UserProfileFragment : Fragment() {
 //    }
 
     private fun observe() {
-        userViewModel.user.observe(viewLifecycleOwner) {
-            adapter.updateUser(it)
-        }
+        userViewModel.user.observe(viewLifecycleOwner) { user ->
+            // Atualizar o TextView com o nome do perfil
+            adapter.updateUser(user)
+            binding.nameProfilePage.text = user.name
+            binding.bioProfilePage.text = if (user.about.isNullOrEmpty()) {
+                "Sem biografia"
+            } else {
+                user.about
+            }
+            binding.usernameProfilePage.text = user.nickname
 
+            // Carregar a imagem do perfil utilizando o Picasso
+//            Picasso.get()
+//                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
+//                .into(binding.avatarUser)
+        }
 //        viewModel.delete.observe(viewLifecycleOwner) {
 //            if (!it.status()) {
 //                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
