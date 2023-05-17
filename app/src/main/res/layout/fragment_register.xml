@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_login_page"
-    tools:context=".register.RegisterFragment">
+    tools:context=".view.RegisterFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                         android:autofillHints="emailAddress"
                         android:background="@drawable/border_input_register_center"
                         android:drawableStart="@drawable/icon_locked"
-                        android:drawableEnd="@drawable/icon_eye_slash"
+                        android:drawableEnd="@drawable/icon_visibility_off"
                         android:drawablePadding="20dp"
                         android:drawableTint="@color/code_grey_normal"
                         android:fontFamily="@font/dosis_regular"
@@ -139,7 +139,7 @@
                         android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/button_login"
+                        android:id="@+id/button_register"
                         android:layout_width="300dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="32dp"

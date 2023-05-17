@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_login_page"
-    tools:context=".login.LoginFragment">
+    tools:context=".view.LoginFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -92,8 +92,8 @@
                         android:layout_height="wrap_content"
                         android:autofillHints="password"
                         android:background="@drawable/border_input_borders_bottom"
-                        android:drawableStart="@android:drawable/ic_secure"
-                        android:drawableEnd="@android:drawable/ic_secure"
+                        android:drawableStart="@drawable/icon_locked"
+                        android:drawableEnd="@drawable/icon_visibility_off"
                         android:drawablePadding="30dp"
                         android:drawableTint="@color/code_grey_normal"
                         android:fontFamily="@font/dosis_regular"
@@ -153,7 +153,6 @@
                         android:background="@drawable/gradient_row_left_bottom" />
 
                     <TextView
-                        android:id="@+id/button_register"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center"
