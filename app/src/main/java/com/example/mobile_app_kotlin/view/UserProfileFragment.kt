@@ -1,27 +1,24 @@
 package com.example.mobile_app_kotlin.view
 
-import android.graphics.drawable.PictureDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentUserProfileBinding
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.CodeListener
-import com.example.mobile_app_kotlin.view.adapter.UserAdapter
+import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
-import com.squareup.picasso.Picasso
 
 class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
-    private val adapter = UserAdapter()
+    private val postAdapter = PostAdapter()
 //    private var taskFilter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,35 +32,23 @@ class UserProfileFragment : Fragment() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
 
-//        binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
-//        binding.recyclerAllPosts.adapter = adapter
-
-//        taskFilter = requireArguments().getInt(CodeConstants.BUNDLE.CODEFILTER, 0)
+        binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
+        binding.recyclerAllPosts.adapter = postAdapter
 
         val listener = object : CodeListener {
             override fun onListClick(id: Int) {
-//                val intent = Intent(context, TaskFormActivity::class.java)
-                val bundle = Bundle()
-                bundle.putInt(CodeConstants.BUNDLE.TASKID, id)
-//                intent.putExtras(bundle)
-//                startActivity(intent)
             }
 
             override fun onDeleteClick(id: Int) {
-//                viewModel.delete(id)
             }
 
             override fun onLikePost(id: Int) {
-//                viewModel.status(id, true)
             }
 
             override fun onDislikePost(id: Int) {
-//                viewModel.status(id, false)
             }
         }
-        adapter.attachListener(listener)
-
-//        userViewModel.loadUserName()
+        postAdapter.attachListener(listener)
 
         observe()
 
@@ -82,39 +67,38 @@ class UserProfileFragment : Fragment() {
 
     }
 
-
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
-
     private fun observe() {
-        userViewModel.user.observe(viewLifecycleOwner) { user ->
-            // Atualizar o TextView com o nome do perfil
-            adapter.updateUser(user)
-            binding.nameProfilePage.text = user.name
-            binding.bioProfilePage.text = if (user.about.isNullOrEmpty()) {
+        userViewModel.user.observe(viewLifecycleOwner) { userProfileModel ->
+            userProfileModel?.posts?.let { postAdapter.updatePosts(it) }
+
+            binding.nameProfilePage.text = if (userProfileModel.user?.name.isNullOrEmpty()) {
+                "Code Labz"
+            } else {
+                userProfileModel.user?.name
+            }
+
+            binding.bioProfilePage.text = if (userProfileModel.user?.about.isNullOrEmpty()) {
                 "Sem biografia"
             } else {
-                user.about
+                userProfileModel.user?.about
             }
-            binding.usernameProfilePage.text = user.nickname
+            binding.usernameProfilePage.text = userProfileModel.user?.nickname
+
+            val topicosQuantidade = userProfileModel.followedTopics?.size.toString()
+            val textoQuantidade =
+                getString(R.string.profile_total_topics, topicosQuantidade)
+            binding.topicoQtdProfilePage.text = textoQuantidade
+
 
             // Carregar a imagem do perfil utilizando o Picasso
-            Picasso.get()
-                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
-                .into(binding.avatarUser)
-        }
-//        viewModel.delete.observe(viewLifecycleOwner) {
-//            if (!it.status()) {
-//                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
-//            }
-//        }
+//            Picasso.get()
+//                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
+//                .into(itemBinding.avatarUser)
 
-//        viewModel.status.observe(viewLifecycleOwner) {
-//            if (!it.status()) {
-//                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
-//            }
-//        }
+            if (userProfileModel.posts?.isNotEmpty() == true) {
+                binding.recyclerAllPosts.visibility = View.VISIBLE
+                binding.listPostEmpty.visibility = View.GONE
+            }
+        }
     }
 }

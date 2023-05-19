@@ -22,8 +22,4 @@ interface LoginService {
         @Body request: Map<String, String>
     ): Call<String>
 
-    @GET("users/{id}")
-    fun getUserProfile(
-        @Path(value = "id", encoded = true) idUser: Int
-    ): Call<UserModel>
 }

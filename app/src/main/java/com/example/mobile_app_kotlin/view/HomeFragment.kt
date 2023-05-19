@@ -121,7 +121,6 @@ class HomeFragment : Fragment() {
 
         profileCard.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_userProfileFragment)
-            postViewModel.getPosts()
         }
     }
 

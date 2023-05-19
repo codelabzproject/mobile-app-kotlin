@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -60,8 +61,8 @@
                         android:id="@+id/avatar_user"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/profile_picture"
-                        android:contentDescription="@string/profilepicture" />
+                        android:contentDescription="@string/profilepicture"
+                        android:src="@drawable/profile_picture" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -118,6 +119,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:maxLines="1"
                                 android:text="@string/profile_bio"
                                 android:textColor="@color/white"
                                 android:textSize="20sp" />
@@ -139,8 +141,8 @@
                             android:layout_height="56dp"
                             android:layout_gravity="center"
                             android:background="@color/code_background_black"
-                            android:src="@drawable/icon_config"
-                            android:contentDescription="@string/settings_profile_button" />
+                            android:contentDescription="@string/settings_profile_button"
+                            android:src="@drawable/icon_config" />
                     </FrameLayout>
                 </LinearLayout>
 
@@ -167,13 +169,19 @@
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/topico_qtd_profile_page"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/profile_total_topics"
-                            android:textColor="@color/code_purple_normal"
-                            android:textSize="15sp" />
+                        <LinearLayout
+                            android:layout_width="369dp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/topicoQtdProfilePage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/profile_total_topics"
+                                android:textColor="@color/code_purple_normal"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -181,29 +189,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/lost_astronaut"/>
+                <LinearLayout
+                    android:id="@+id/listPostEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profile_no_post"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textAlignment="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profile_no_post_to_share"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textAlignment="center"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/lost_astronaut" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_no_post"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_no_post_to_share"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_all_posts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/fragment_card_timeline" />
+
+                <!--                <include layout="@layout/fragment_card_timeline" />-->
+                <!--                <include layout="@layout/fragment_card_timeline" />-->
+                <!--                <include layout="@layout/fragment_card_timeline" />-->
+                <!--                <include layout="@layout/fragment_card_timeline" />-->
 
             </LinearLayout>
         </LinearLayout>
