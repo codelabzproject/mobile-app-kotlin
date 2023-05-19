@@ -11,20 +11,24 @@ import com.example.mobile_app_kotlin.view.viewholder.PostViewHolder
 class PostAdapter : RecyclerView.Adapter<PostViewHolder>() {
 
     private var listPosts: List<PostModel> = arrayListOf()
-    private lateinit var listener: CodeListener
+    private var codeListener: CodeListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemBinding = FragmentCardTimelineBinding.inflate(inflater, parent, false)
-        return PostViewHolder(itemBinding, listener)
+        return PostViewHolder(itemBinding, codeListener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bindData(listPosts[position])
+        holder.bindData(listPosts[position], position)
     }
 
     override fun getItemCount(): Int {
         return listPosts.count()
+    }
+
+    fun getItem(position: Int): PostModel {
+        return listPosts[position]
     }
 
     fun updatePosts(list: List<PostModel>) {
@@ -33,7 +37,7 @@ class PostAdapter : RecyclerView.Adapter<PostViewHolder>() {
     }
 
     fun attachListener(taskListener: CodeListener) {
-        listener = taskListener
+        codeListener = taskListener
     }
 
 }

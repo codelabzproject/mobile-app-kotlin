@@ -1,5 +1,6 @@
 package com.example.mobile_app_kotlin.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
@@ -29,7 +34,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter = PostAdapter()
-//    private var taskFilter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,68 +46,52 @@ class HomeFragment : Fragment() {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllPosts.adapter = adapter
 
-//        taskFilter = requireArguments().getInt(CodeConstants.BUNDLE.CODEFILTER, 0)
-
         val listener = object : CodeListener {
-
-            override fun onListClick(id: Int) {
-                val selectedPost = postViewModel.getPostById(id)
-                selectedPost?.let {
-                    // Navegar para o PostExpandedFragment
-                    findNavController().navigate(R.id.action_timelineFragment_to_postExpandedFragment)
-                }
-            }
-
-//            override fun onListClick(id: Int) {
-//                val selectedPost = postViewModel.getPostById(id)
-//                selectedPost?.let {
-//                    val bundle = Bundle()
-//                    bundle.putParcelable("selectedPost", selectedPost)
-//                    val fragment = PostExpandedFragment()
-//                    fragment.arguments = bundle
-//
-//                    // Navegar para o PostExpandedFragment
-//                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//                    transaction.replace(R.id.fragment_container, fragment)
-//                    transaction.addToBackStack(null)
-//                    transaction.commit()
-//                }
+            //            override fun onLikePost(position: Int, id: Int) {
 //            }
-
-
-//            override fun onListClick(id: Int) {
-////                val intent = Intent(context, TaskFormActivity::class.java)
-//                val bundle = Bundle()
-//                bundle.putInt(CodeConstants.BUNDLE.TASKID, id)
-////                intent.putExtras(bundle)
-////                startActivity(intent)
-//            }
-
-            override fun onDeleteClick(id: Int) {
-//                viewModel.delete(id)
-            }
-
-            override fun onLikePost(id: Int) {
-//                viewModel.status(id, true)
-            }
-
-            override fun onDislikePost(id: Int) {
-//                viewModel.status(id, false)
+            override fun onClickPost(position: Int) {
+//                val selectedPost = adapter.getItem(position)
+//                val bundle = bundleOf("selectedPost" to selectedPost)
+//                findNavController().navigate(R.id.action_timelineFragment_to_postExpandedFragment, bundle)
             }
         }
-        adapter.attachListener(listener)
 
+//                val listener = object : TaskListener {
+//            override fun onListClick(id: Int) {
+//                val intent = Intent(context, TaskFormActivity::class.java)
+//                val bundle = Bundle()
+//                bundle.putInt(TaskConstants.BUNDLE.TASKID, id)
+//                intent.putExtras(bundle)
+//                startActivity(intent)
+//            }
+//
+//            override fun onDeleteClick(id: Int) {
+//                viewModel.delete(id)
+//            }
+//
+//            override fun onCompleteClick(id: Int) {
+//                viewModel.status(id, true)
+//            }
+//
+//            override fun onUndoClick(id: Int) {
+//                viewModel.status(id, false)
+//            }
+//        }
+
+        adapter.attachListener(listener)
         loginViewModel.loadUserName()
 
         observe()
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -111,12 +99,8 @@ class HomeFragment : Fragment() {
 
         val profileCard = view.findViewById<LinearLayout>(R.id.profile_home_resumed)
 
-        // Adiciona um listener para o evento de clique no botão
         fabButton.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_createPostActivity)
-
-            // Faça o que desejar ao clicar no botão
-//            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
         }
 
         profileCard.setOnClickListener {
@@ -129,34 +113,14 @@ class HomeFragment : Fragment() {
         postViewModel.getPosts()
     }
 
-
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
-
     private fun observe() {
         loginViewModel.name.observe(viewLifecycleOwner) {
-//            view?.findViewById<TextView>(R.id.username_user)?.text ?: it
             binding.usernameUser.text = it
-            binding.avatarUser.setImageURI("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg".toUri())
-
+//            binding.avatarUser.setImageURI("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg".toUri())
         }
 
         postViewModel.posts.observe(viewLifecycleOwner) {
             adapter.updatePosts(it)
         }
-
-//        viewModel.delete.observe(viewLifecycleOwner) {
-//            if (!it.status()) {
-//                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
-//            }
-//        }
-
-//        viewModel.status.observe(viewLifecycleOwner) {
-//            if (!it.status()) {
-//                Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
-//            }
-//        }
     }
 }
