@@ -1,9 +1,11 @@
 package com.example.mobile_app_kotlin.view
 
+import android.graphics.drawable.PictureDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +15,7 @@ import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.CodeListener
 import com.example.mobile_app_kotlin.view.adapter.UserAdapter
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
+import com.squareup.picasso.Picasso
 
 class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
@@ -98,9 +101,9 @@ class UserProfileFragment : Fragment() {
             binding.usernameProfilePage.text = user.nickname
 
             // Carregar a imagem do perfil utilizando o Picasso
-//            Picasso.get()
-//                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
-//                .into(binding.avatarUser)
+            Picasso.get()
+                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
+                .into(binding.avatarUser)
         }
 //        viewModel.delete.observe(viewLifecycleOwner) {
 //            if (!it.status()) {

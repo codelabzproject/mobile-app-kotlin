@@ -72,4 +72,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version"
 
+    //Picasso Images
+    def picasso_version = "2.8"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+
 }

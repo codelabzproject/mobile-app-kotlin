@@ -13,10 +13,6 @@ class UserProfileViewHolder(private val itemBinding: FragmentUserProfileBinding,
      */
     fun bindData(userModel: UserModel) {
 
-        itemBinding.nameProfilePage.text = userModel.name
-        itemBinding.usernameProfilePage.text = userModel.nickname
-        itemBinding.bioProfilePage.text = userModel.about
-
 //        itemBinding.liskes.text = postModel.points.toString()
 //        itemBinding.commentsPosts.text = postModel.comments.toString()
 

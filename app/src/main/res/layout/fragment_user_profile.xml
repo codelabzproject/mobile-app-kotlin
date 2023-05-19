@@ -102,14 +102,15 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="300dp"
+                        android:layout_width="280dp"
                         android:layout_height="56dp"
                         android:background="@drawable/border_cards">
 
                         <LinearLayout
-                            android:layout_width="300dp"
+                            android:layout_width="280dp"
                             android:layout_height="56dp"
                             android:background="@color/code_background_black"
+                            android:gravity="start"
                             android:paddingLeft="9dp">
 
                             <TextView
@@ -134,7 +135,7 @@
                         android:background="@drawable/border_cards">
 
                         <ImageButton
-                            android:layout_width="47dp"
+                            android:layout_width="48dp"
                             android:layout_height="56dp"
                             android:layout_gravity="center"
                             android:background="@color/code_background_black"
