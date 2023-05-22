@@ -9,7 +9,7 @@ import com.example.mobile_app_kotlin.service.repository.remote.TopicService
 
 class TopicRepository(context: Context) : BaseRepository(context) {
 
-    private val remote = RetrofitClient.getService(TopicService::class.java)
+    private val remote = RetrofitClient.getService(TopicService::class.java, context)
 
     private val database = CodeDatabase.getDatabase(context).topicDAO()
 

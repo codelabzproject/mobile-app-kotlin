@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class PostRepository(context: Context): BaseRepository(context) {
 
-    private val remote = RetrofitClient.getService(PostService::class.java)
+    private val remote = RetrofitClient.getService(PostService::class.java, context)
 
     fun getPosts(listener: APIListener<List<PostModel>>) {
 
@@ -32,5 +32,15 @@ class PostRepository(context: Context): BaseRepository(context) {
         val post = CreatePostRequest("Título do post", "Conteúdo do post", 123, 456)
 
         executeCall(remote.createPost(post), listener)
+    }
+
+    fun getPostById(idPost: Int, listener: APIListener<PostModel>) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+        
+        executeCall(remote.getPostById(idPost), listener)
     }
 }

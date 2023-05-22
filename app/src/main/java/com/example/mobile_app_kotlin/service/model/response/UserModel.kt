@@ -13,6 +13,9 @@ class UserModel {
     @SerializedName("name")
     var name: String = ""
 
+    @SerializedName("nickname")
+    var nickname: String = ""
+
     @SerializedName("avatar")
     var avatar: String = ""
 

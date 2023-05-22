@@ -1,25 +1,13 @@
 package com.example.mobile_app_kotlin.service.listener
 
 interface CodeListener {
+    fun onClickPost(position: Int)
 
-    /**
-     * Click para edição
-     */
-    fun onListClick(id: Int)
+//    fun onDeleteClick(id: Int)
 
-    /**
-     * Remoção
-     */
-    fun onDeleteClick(id: Int)
+//    fun onLikePost(id: Int)
 
-    /**
-     * Like post
-     */
-    fun onLikePost(id: Int)
 
-    /**
-     * Dislike post
-     */
-    fun onDislikePost(id: Int)
+//    fun onDislikePost(id: Int)
 
 }

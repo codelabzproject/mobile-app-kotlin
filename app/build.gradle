@@ -68,6 +68,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    def life_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_version"
+
+    //Picasso Images
+    def picasso_version = "2.8"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+
 }

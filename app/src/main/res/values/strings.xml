@@ -29,7 +29,7 @@
     <string name="profile_nickname">~@Rafinhas</string>
     <string name="profile_bio">Sou o Cara do TI</string>
     <string name="profile_followed_Topics">Topicos seguidos</string>
-    <string name="profile_total_topics">12 topicos</string>
+    <string name="profile_total_topics">%s tópicos</string>
     <string name="profile_no_post">Você não possui postagens ainda...</string>
     <string name="profile_no_post_to_share">Sinta-se a vontade pra compartilhar em nossa plataforma</string>
 
@@ -52,5 +52,8 @@
     <string name="title_post">Adicione o titulo...</string>
     <string name="public_post">Publicar</string>
     <string name="button_add_new_post">Botão para adicionar nova postagem</string>
+    <string name="apelido_da_pessoa">Apelido_da_pessoa</string>
+    <string name="profilepicture">ProfilePicture</string>
+    <string name="settings_profile_button">settings profile button</string>
 
 </resources>

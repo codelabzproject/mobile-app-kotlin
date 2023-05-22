@@ -68,7 +68,9 @@ class LoginFragment : Fragment() {
             login(view)
         }
 
-        viewModel.verifyLoggedUser()
+//        viewModel.verifyLoggedUser()
+
+
 
         observe()
     }

@@ -8,11 +8,6 @@ import retrofit2.http.*
 interface LoginService {
 
     @POST("auth/login")
-    fun getUser(
-        @Body userRequest: UserRequest,
-    ): Call<UserModel>
-
-    @POST("auth/login")
     fun loginUser(
         @Body userRequest: UserRequest,
     ): Call<UserModel>
@@ -26,4 +21,5 @@ interface LoginService {
     fun recoveryPassword(
         @Body request: Map<String, String>
     ): Call<String>
+
 }
