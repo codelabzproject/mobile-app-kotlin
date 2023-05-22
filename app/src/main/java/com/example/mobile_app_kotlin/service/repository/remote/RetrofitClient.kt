@@ -67,7 +67,7 @@ class RetrofitClient private constructor() {
 
             if (!::INSTANCE.isInitialized) {
                 INSTANCE = Retrofit.Builder()
-                    .baseUrl("http://172.16.0.209:8080/")
+                    .baseUrl("http://10.18.7.76:8080/")
                     .client(httpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

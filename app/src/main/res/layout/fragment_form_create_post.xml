@@ -28,6 +28,8 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/topicsSelection"
+            android:clickable="true"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
@@ -54,11 +56,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="Escolha um tópico"
+                    android:text="@string/spinner_prompt"
                     android:textColor="@color/code_text"
                     android:textSize="15sp" />
 
-                <Spinner
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="10dp"
                     android:layout_marginLeft="40dp"
