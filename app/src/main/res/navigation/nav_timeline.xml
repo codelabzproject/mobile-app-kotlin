@@ -31,20 +31,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_timelineFragment_to_topicFragment"
+            app:destination="@id/topicFragment" />
     </fragment>
     <fragment
         android:id="@+id/postExpandedFragment"
         android:name="com.example.mobile_app_kotlin.view.PostExpandedFragment"
         android:label="fragment_post_expanded"
-        tools:layout="@layout/fragment_post_expanded">
-        <action
-            android:id="@+id/action_postExpandedFragment_to_timelineFragment"
-            app:destination="@id/timelineFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left" />
-    </fragment>
+        tools:layout="@layout/fragment_post_expanded"/>
     <activity
         android:id="@+id/createPostActivity"
         android:name="com.example.mobile_app_kotlin.view.CreatePostActivity"
@@ -55,4 +50,9 @@
         android:name="com.example.mobile_app_kotlin.view.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="com.example.mobile_app_kotlin.view.TopicFragment"
+        android:label="fragment_topic"
+        tools:layout="@layout/fragment_topic" />
 </navigation>

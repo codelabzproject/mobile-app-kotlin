@@ -77,7 +77,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/seeHighTopics"
+                android:id="@+id/buttonSeeHighTopics"
                 android:layout_width="148dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"

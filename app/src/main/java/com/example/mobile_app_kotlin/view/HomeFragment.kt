@@ -82,16 +82,20 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val fabButton = view.findViewById<FloatingActionButton>(R.id.button_add_new_post)
-
-        val profileCard = view.findViewById<LinearLayout>(R.id.profile_home_resumed)
-
         fabButton.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_createPostActivity)
         }
 
+        val profileCard = view.findViewById<LinearLayout>(R.id.profile_home_resumed)
         profileCard.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_userProfileFragment)
+        }
+
+        val seeHighTopics = view.findViewById<LinearLayout>(R.id.buttonSeeHighTopics)
+        seeHighTopics.setOnClickListener {
+            findNavController().navigate(R.id.action_timelineFragment_to_topicFragment)
         }
     }
 

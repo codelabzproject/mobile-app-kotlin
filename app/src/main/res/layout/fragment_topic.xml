@@ -29,7 +29,6 @@
                     android:src="@drawable/logo_codelabz" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -47,71 +46,44 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_marginRight="5dp"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginVertical="16dp"
                     android:fontFamily="@font/dosis_extra_light"
                     android:text="@string/topics_followed"
-                    android:textColor="@color/code_grey_text"
+                    android:textColor="@color/code_white_normal"
                     android:textSize="14sp" />
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:orientation="vertical">-->
-
+                        <include layout="@layout/topic_item_layout"/>
+                        <include layout="@layout/topic_item_layout"/>
                         <include layout="@layout/topic_item_layout"/>
 
-                        <!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:padding="20dp">-->
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="30dp"-->
-<!--                                android:layout_height="match_parent"-->
-<!--                                android:src="@drawable/icon_config"-->
-<!--                                android:layout_marginLeft="12dp"/>-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="left"-->
-<!--                                android:layout_marginLeft="20dp"-->
-<!--                                android:fontFamily="@font/dosis_extra_light"-->
-<!--                                android:text="React"-->
-<!--                                android:textColor="@color/white"-->
-<!--                                android:textSize="16sp" />-->
-
-<!--                        </LinearLayout>-->
-
-<!--                    </LinearLayout>-->
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -120,7 +92,7 @@
                     android:layout_marginLeft="30dp"
                     android:fontFamily="@font/dosis_extra_light"
                     android:text="@string/topics"
-                    android:textColor="@color/code_grey_text"
+                    android:textColor="@color/code_white_normal"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -129,37 +101,12 @@
                     android:orientation="vertical">
 
                     <include layout="@layout/topic_item_layout"/>
+                    <include layout="@layout/topic_item_layout"/>
+                    <include layout="@layout/topic_item_layout"/>
+                    <include layout="@layout/topic_item_layout"/>
+                    <include layout="@layout/topic_item_layout"/>
+                    <include layout="@layout/topic_item_layout"/>
 
-
-                    <!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:padding="20dp">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="30dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/icon_config"-->
-<!--                            android:layout_marginLeft="12dp"/>-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="left"-->
-<!--                            android:layout_marginLeft="20dp"-->
-<!--                            android:fontFamily="@font/dosis_extra_light"-->
-<!--                            android:text="React"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:textSize="16sp" />-->
-
-<!--                    </LinearLayout>-->
-
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="2dp"-->
-<!--                        android:background="@drawable/line_division"-->
-<!--                        android:focusable="false"/>-->
                 </LinearLayout>
 
             </LinearLayout>
