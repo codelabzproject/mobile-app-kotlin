@@ -13,6 +13,7 @@ import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.CodeListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
+import com.squareup.picasso.Picasso
 
 class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
@@ -36,16 +37,16 @@ class UserProfileFragment : Fragment() {
         binding.recyclerAllPosts.adapter = postAdapter
 
         val listener = object : CodeListener {
-            override fun onListClick(id: Int) {
+            override fun onClickPost(position: Int) {
+
             }
 
-            override fun onDeleteClick(id: Int) {
+            override fun onClickLikeButton(position: Int) {
+
             }
 
-            override fun onLikePost(id: Int) {
-            }
+            override fun onClickDislikeButton(position: Int) {
 
-            override fun onDislikePost(id: Int) {
             }
         }
         postAdapter.attachListener(listener)
@@ -82,6 +83,7 @@ class UserProfileFragment : Fragment() {
             } else {
                 userProfileModel.user?.about
             }
+
             binding.usernameProfilePage.text = userProfileModel.user?.nickname
 
             val topicosQuantidade = userProfileModel.followedTopics?.size.toString()
@@ -91,9 +93,9 @@ class UserProfileFragment : Fragment() {
 
 
             // Carregar a imagem do perfil utilizando o Picasso
-//            Picasso.get()
-//                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg")
-//                .into(itemBinding.avatarUser)
+            Picasso.get()
+                .load("https://raw.githubusercontent.com/codelabzproject/public/main/png/avatares/avatar1.png")
+                .into(binding.avatarUser)
 
             if (userProfileModel.posts?.isNotEmpty() == true) {
                 binding.recyclerAllPosts.visibility = View.VISIBLE

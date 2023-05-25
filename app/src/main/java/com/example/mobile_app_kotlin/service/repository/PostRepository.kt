@@ -43,4 +43,24 @@ class PostRepository(context: Context): BaseRepository(context) {
         
         executeCall(remote.getPostById(idPost), listener)
     }
+
+    fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<String>) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        executeCall(remote.likePost(idPost, idUser), listener)
+    }
+    
+    fun setDislikePost(idPost: Int, idUser: Int, listener: APIListener<String>) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        executeCall(remote.dislikePost(idPost, idUser), listener)
+    }
 }

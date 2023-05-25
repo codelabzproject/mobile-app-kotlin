@@ -77,6 +77,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/seeHighTopics"
                 android:layout_width="148dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -131,7 +132,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:spanCount="1"
                     tools:itemCount="7"
-                    tools:listitem="@layout/fragment_card_timeline" />
+                    tools:listitem="@layout/fragment_post_timeline" />
 
                 <!--                <androidx.recyclerview.widget.RecyclerView-->
                 <!--                    android:id="@+id/recycler_all_posts"-->

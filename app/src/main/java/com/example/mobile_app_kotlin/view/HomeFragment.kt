@@ -1,24 +1,16 @@
 package com.example.mobile_app_kotlin.view
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.net.toUri
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
-import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.CodeListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
@@ -53,36 +45,31 @@ class HomeFragment : Fragment() {
         binding.recyclerAllPosts.adapter = adapter
 
         val listener = object : CodeListener {
-            //            override fun onLikePost(position: Int, id: Int) {
-//            }
+
             override fun onClickPost(position: Int) {
 //                val selectedPost = adapter.getItem(position)
-//                val bundle = bundleOf("selectedPost" to selectedPost)
-//                findNavController().navigate(R.id.action_timelineFragment_to_postExpandedFragment, bundle)
+//                selectedPost.idPost
+//                postViewModel.setLikePost(
+//                    selectedPost.idPost,
+//                    loginViewModel.loadUserIdLogged().toInt()
+//                )
+
+            }
+
+            override fun onClickLikeButton(position: Int) {
+
+                val selectedPost = adapter.getItem(position)
+                selectedPost.idPost
+                postViewModel.setLikePost(
+                    selectedPost.idPost,
+                    loginViewModel.loadUserIdLogged()
+                )
+            }
+
+            override fun onClickDislikeButton(position: Int) {
+                TODO("Not yet implemented")
             }
         }
-
-//                val listener = object : TaskListener {
-//            override fun onListClick(id: Int) {
-//                val intent = Intent(context, TaskFormActivity::class.java)
-//                val bundle = Bundle()
-//                bundle.putInt(TaskConstants.BUNDLE.TASKID, id)
-//                intent.putExtras(bundle)
-//                startActivity(intent)
-//            }
-//
-//            override fun onDeleteClick(id: Int) {
-//                viewModel.delete(id)
-//            }
-//
-//            override fun onCompleteClick(id: Int) {
-//                viewModel.status(id, true)
-//            }
-//
-//            override fun onUndoClick(id: Int) {
-//                viewModel.status(id, false)
-//            }
-//        }
 
         adapter.attachListener(listener)
         loginViewModel.loadUserName()

@@ -50,6 +50,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         _name.value = securityPreferences.get(CodeConstants.SHARED.NICK_NAME)
     }
 
+    fun loadUserIdLogged(): Int {
+        return securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
+    }
+
 
 //    fun verifyLoggedUser() {
 //        val token = securityPreferences.get(CodeConstants.SHARED.TOKEN_KEY)

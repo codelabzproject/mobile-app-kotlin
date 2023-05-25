@@ -148,7 +148,7 @@
                             android:layout_gravity="center"
                             android:background="@color/code_background_black"
                             android:contentDescription="@string/settings_profile_button"
-                            android:src="@drawable/icon_config" />
+                            android:src="@drawable/icon_settings" />
                     </FrameLayout>
                 </LinearLayout>
 
@@ -166,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/code_background_black"
                         android:orientation="vertical"
-                        android:padding="9dp">
+                        android:padding="12dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -235,7 +235,7 @@
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="7"
-                    tools:listitem="@layout/fragment_card_timeline" />
+                    tools:listitem="@layout/fragment_post_timeline" />
 
                 <!--                <include layout="@layout/fragment_card_timeline" />-->
                 <!--                <include layout="@layout/fragment_card_timeline" />-->

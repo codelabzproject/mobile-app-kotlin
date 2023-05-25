@@ -16,10 +16,6 @@ import com.example.mobile_app_kotlin.R
 
 class CardPostFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,5 +31,23 @@ class CardPostFragment : Fragment() {
         cardPostTimeline.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_postExpandedFragment)
         }
+    }
+
+    // Método para lidar com o clique no botão de curtir
+    fun onLikeButtonClick(position: Int) {
+        // Lógica para tratar o clique no botão de curtir
+        // ...
+    }
+
+    // Método para lidar com o clique no botão de descurtir
+    fun onDislikeButtonClick(position: Int) {
+        // Lógica para tratar o clique no botão de descurtir
+        // ...
+    }
+
+    // Método para atualizar o texto do título do cartão
+    fun updateTitleText(newText: String) {
+        // Lógica para atualizar o texto do título do cartão
+        // ...
     }
 }
