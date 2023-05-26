@@ -13,14 +13,20 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mobile_app_kotlin.R
+import com.example.mobile_app_kotlin.view.adapter.PostAdapter
+import com.example.mobile_app_kotlin.viewmodel.PostViewModel
 
-class CardPostFragment : Fragment() {
+class CardPostFragment(
+    private val adapter: PostAdapter,
+    private val viewModel: PostViewModel,
+) :
+    Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_card_postagem, container, false)
     }
 
@@ -33,21 +39,23 @@ class CardPostFragment : Fragment() {
         }
     }
 
-    // Método para lidar com o clique no botão de curtir
-    fun onLikeButtonClick(position: Int) {
-        // Lógica para tratar o clique no botão de curtir
-        // ...
+    fun onClickPost(position: Int) {
     }
 
-    // Método para lidar com o clique no botão de descurtir
+    fun onLikeButtonClick(position: Int, idUser: Int) {
+        val selectedPost = adapter.getItem(position)
+        selectedPost.idPost
+        viewModel.setLikePost(
+            selectedPost.idPost,
+            idUser,
+        )
+    }
+
+
     fun onDislikeButtonClick(position: Int) {
-        // Lógica para tratar o clique no botão de descurtir
-        // ...
     }
 
-    // Método para atualizar o texto do título do cartão
+
     fun updateTitleText(newText: String) {
-        // Lógica para atualizar o texto do título do cartão
-        // ...
     }
 }

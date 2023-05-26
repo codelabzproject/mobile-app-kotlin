@@ -1,26 +1,31 @@
 package com.example.mobile_app_kotlin.view.viewholder
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_app_kotlin.databinding.TopicItemLayoutBinding
+import com.example.mobile_app_kotlin.service.listener.TopicListener
 import com.example.mobile_app_kotlin.service.model.response.TopicModel
+import com.squareup.picasso.Picasso
 
-class TopicViewHolder (
+class TopicViewHolder(
     private val itemBinding: TopicItemLayoutBinding,
+    private val postListener: TopicListener?,
+    private val context: Context,
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
     fun bindData(topicModel: TopicModel, position: Int) {
         itemBinding.nameTopic.text = topicModel.name
-//        itemBinding.imageTopic.setImageResource(topicModel.image)
 
-//        itemBinding.titlePost.text = postModel.title
-//        itemBinding.contentPost.text = postModel.content
-//        itemBinding.commentsPosts.text = postModel.comments.toString()
-//        itemBinding.liskes.text = postModel.points.toString()
+        Picasso.get()
+//            .load(topicModel.image)
+            .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+            .into(itemBinding.imageTopic)
+    }
 
+    fun onClickTopic() {
         itemBinding.root.setOnClickListener {
-//            codeListener?.onClickPost(position)
+            postListener?.onClickTopic(adapterPosition)
         }
-
     }
 
 }

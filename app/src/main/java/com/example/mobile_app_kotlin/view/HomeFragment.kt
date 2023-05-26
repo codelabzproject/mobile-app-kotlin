@@ -11,17 +11,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
-import com.example.mobile_app_kotlin.service.listener.CodeListener
+import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
 import com.example.mobile_app_kotlin.viewmodel.PostViewModel
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var userViewModel: UserViewModel
     private lateinit var postViewModel: PostViewModel
+
+    private lateinit var cardPost: CardPostFragment
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -44,24 +48,17 @@ class HomeFragment : Fragment() {
         binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllPosts.adapter = adapter
 
-        val listener = object : CodeListener {
+        cardPost = CardPostFragment(adapter, postViewModel)
+
+        val listener = object : PostListener {
 
             override fun onClickPost(position: Int) {
-//                val selectedPost = adapter.getItem(position)
-//                selectedPost.idPost
-//                postViewModel.setLikePost(
-//                    selectedPost.idPost,
-//                    loginViewModel.loadUserIdLogged().toInt()
-//                )
-
+                cardPost.onClickPost(position)
             }
 
             override fun onClickLikeButton(position: Int) {
-
-                val selectedPost = adapter.getItem(position)
-                selectedPost.idPost
-                postViewModel.setLikePost(
-                    selectedPost.idPost,
+                cardPost.onLikeButtonClick(
+                    position,
                     loginViewModel.loadUserIdLogged()
                 )
             }
@@ -107,7 +104,10 @@ class HomeFragment : Fragment() {
     private fun observe() {
         loginViewModel.name.observe(viewLifecycleOwner) {
             binding.usernameUser.text = it
-//            binding.avatarUser.setImageURI("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.svg".toUri())
+
+            Picasso.get()
+                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+                .into(binding.avatarUser)
         }
 
         postViewModel.posts.observe(viewLifecycleOwner) {

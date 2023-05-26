@@ -1,6 +1,6 @@
 package com.example.mobile_app_kotlin.service.listener
 
-interface CodeListener {
+interface PostListener {
     fun onClickPost(position: Int)
 
     fun onClickLikeButton(position: Int)

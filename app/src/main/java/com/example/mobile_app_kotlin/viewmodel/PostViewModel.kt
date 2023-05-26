@@ -62,8 +62,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setLikePost(idPost: Int, idUser: Int) {
-        postRepository.setLikePost(idPost, idUser, object : APIListener<String> {
-            override fun onSuccess(result: String) {
+        postRepository.setLikePost(idPost, idUser, object : APIListener<Void> {
+            override fun onSuccess(result: Void) {
 
                 _newCountPost.value = ValidationModel()
             }

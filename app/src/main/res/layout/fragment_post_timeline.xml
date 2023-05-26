@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:background="@drawable/border_cards">
 
@@ -91,30 +91,18 @@
                         android:layout_marginLeft="4dp"
                         android:text="Flutter"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/userInfoPost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="Enviado por "
+                        android:maxLines="1"
+                        android:text="@string/enviado_por_user_em_data"
                         android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
+                        android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/user_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*apelido do usuario* "
-                        android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="há 3 dias"
-                        android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -129,18 +117,20 @@
                         android:id="@+id/title_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="Titulo da Postagem"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/content_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:maxLines="3"
                         android:text="Lorem ipsum dolor sit amet, consectetur ad i pi sc ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,7 +139,7 @@
                         android:layout_marginTop="2dp"
                         android:text="Clique para ver mais"
                         android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
+                        android:textSize="12sp" />
 
 
                     <LinearLayout
@@ -173,7 +163,7 @@
                             android:layout_marginLeft="4dp"
                             android:text="4 comentários"
                             android:textColor="@color/code_grey_normal"
-                            android:textSize="8sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
                 </LinearLayout>

@@ -19,7 +19,7 @@ class RetrofitClient private constructor() {
             val httpClient = OkHttpClient.Builder()
                 .addInterceptor { chain ->
                     val request = chain.request().newBuilder()
-//                        .addHeader("Content-Type", "application/json")
+                        .addHeader("Content-Type", "application/json")
                         .addHeader("Accept", "*/*, text/plain, application/json")
                         .addHeader("Accept-Encoding", "gzip, deflate, br")
                         .addHeader("keep-alive", "timeout=60")

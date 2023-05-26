@@ -17,20 +17,20 @@ class TopicModel {
     @ColumnInfo(name = "name")
     var name: String? = null
 
-    @SerializedName("about")
-    @ColumnInfo(name = "about")
-    var about: String? = null
+//    @SerializedName("about")
+//    @ColumnInfo(name = "about")
+//    var about: String? = null
 
-    @SerializedName("createdAt")
-    @ColumnInfo(name = "createdAt")
-    var createdAt: String? = null
+//    @SerializedName("createdAt")
+//    @ColumnInfo(name = "createdAt")
+//    var createdAt: String? = null
 
-    @SerializedName("svg")
-    @ColumnInfo(name = "svg",)
+    @SerializedName("png")
+    @ColumnInfo(name = "png")
     var image: String? = null
 
-    @SerializedName("countFollowers")
-    @ColumnInfo(name = "countFollowers")
-    var countFollowers: Int = 0
+//    @SerializedName("countFollowers")
+//    @ColumnInfo(name = "countFollowers")
+//    var countFollowers: Int = 0
 
 }

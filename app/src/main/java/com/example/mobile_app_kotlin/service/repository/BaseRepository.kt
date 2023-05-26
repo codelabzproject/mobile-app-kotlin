@@ -47,6 +47,7 @@ open class BaseRepository(val context: Context) {
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
+                Toast.makeText(context, "Erro no servidor", Toast.LENGTH_SHORT).show()
                 listener.onFailure(context.getString(R.string.ERROR_UNEXPECTED))
             }
         })

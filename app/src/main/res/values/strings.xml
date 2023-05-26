@@ -53,7 +53,16 @@
     <string name="public_post">Publicar</string>
     <string name="button_add_new_post">Botão para adicionar nova postagem</string>
     <string name="apelido_da_pessoa">Apelido_da_pessoa</string>
-    <string name="profilepicture">ProfilePicture</string>
+    <string name="profilePicture">ProfilePicture</string>
     <string name="settings_profile_button">settings profile button</string>
+    <string name="search">Filtrar</string>
+    <string name="enviado_por_user_em_data">Enviado por %s em %s</string>
+
+    <string-array name="topics_array">
+        <item>Flutter</item>
+        <item>React</item>
+        <item>MySQL</item>
+    </string-array>
+
 
 </resources>

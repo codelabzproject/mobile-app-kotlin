@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/code_background_black"
+    android:background="@color/code_background_full_black"
     tools:context=".view.TopicFragment">
 
     <ScrollView
@@ -18,7 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@color/code_grey_dark_model_normal">
+                android:background="@color/code_background_black">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -39,13 +40,13 @@
                 <EditText
                     android:layout_width="340dp"
                     android:layout_height="46dp"
-                    android:background="@color/code_grey_dark_model_normal"
-                    android:padding="7dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Filtrar"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_marginRight="5dp"/>
+                    android:background="@drawable/edittext_rounded_border"
+                    android:paddingStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/search"
+                    android:textColorHint="@color/code_white_normal"
+                    android:textColor="@color/code_white_normal"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -61,19 +62,30 @@
                     android:layout_gravity="left"
                     android:layout_marginStart="30dp"
                     android:layout_marginVertical="16dp"
-                    android:fontFamily="@font/dosis_extra_light"
+                    android:fontFamily="@font/dosis_regular"
                     android:text="@string/topics_followed"
                     android:textColor="@color/code_white_normal"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                        <include layout="@layout/topic_item_layout"/>
-                        <include layout="@layout/topic_item_layout"/>
-                        <include layout="@layout/topic_item_layout"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_topics_followeds"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spanCount="1"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/topic_item_layout" />
+
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                        <include layout="@layout/topic_item_layout"/>-->
+<!--                        <include layout="@layout/topic_item_layout"/>-->
 
                 </LinearLayout>
             </LinearLayout>
@@ -87,25 +99,37 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="30dp"
-                    android:fontFamily="@font/dosis_extra_light"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/dosis_regular"
                     android:text="@string/topics"
                     android:textColor="@color/code_white_normal"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <include layout="@layout/topic_item_layout"/>
-                    <include layout="@layout/topic_item_layout"/>
-                    <include layout="@layout/topic_item_layout"/>
-                    <include layout="@layout/topic_item_layout"/>
-                    <include layout="@layout/topic_item_layout"/>
-                    <include layout="@layout/topic_item_layout"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_all_topics"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spanCount="1"
+                        tools:itemCount="19"
+                        tools:listitem="@layout/topic_item_layout" />
+
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
 
                 </LinearLayout>
 

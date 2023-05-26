@@ -44,7 +44,7 @@ class PostRepository(context: Context): BaseRepository(context) {
         executeCall(remote.getPostById(idPost), listener)
     }
 
-    fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<String>) {
+    fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<Void>) {
 
 //        if (!isConnectionAvailable()) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))

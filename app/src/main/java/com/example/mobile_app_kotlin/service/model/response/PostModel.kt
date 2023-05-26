@@ -16,7 +16,7 @@ class PostModel(
     val comments: Int,
 
     @SerializedName("createdIn")
-    val createdIn: String,
+    val createdIn: String?,
 
     @SerializedName("owner")
     val user: UserModel,

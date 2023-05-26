@@ -26,7 +26,7 @@ interface PostService {
     fun likePost(
         @Path("idPost", encoded = true) idPost: Int,
         @Path("idUser", encoded = true) idUser: Int,
-    ): Call<String>
+    ): Call<Void>
 
 
     @PUT("posts/down/{idPost}/{idUser}")

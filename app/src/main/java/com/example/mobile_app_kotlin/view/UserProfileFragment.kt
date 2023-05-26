@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentUserProfileBinding
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
-import com.example.mobile_app_kotlin.service.listener.CodeListener
+import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
 import com.squareup.picasso.Picasso
@@ -36,7 +36,7 @@ class UserProfileFragment : Fragment() {
         binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllPosts.adapter = postAdapter
 
-        val listener = object : CodeListener {
+        val listener = object : PostListener {
             override fun onClickPost(position: Int) {
 
             }

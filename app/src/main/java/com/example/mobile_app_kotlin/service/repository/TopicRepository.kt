@@ -23,6 +23,10 @@ class TopicRepository(context: Context) : BaseRepository(context) {
         executeCall(remote.getTopics(), listener)
     }
 
+    fun getTopicsByUser(idUser: Int, listener: APIListener<List<TopicModel>>) {
+        executeCall(remote.getTopicsByUser(idUser), listener)
+    }
+
     fun saveTopics(listTopics: List<TopicModel>) {
         database.clear()
         database.saveList(listTopics)
