@@ -57,12 +57,15 @@
     <string name="settings_profile_button">settings profile button</string>
     <string name="search">Filtrar</string>
     <string name="enviado_por_user_em_data">Enviado por %s em %s</string>
+    <string name="enviado_em">Enviado em %s</string>
+    <string name="s_curtidas">%s curtidas</string>
+    <string name="qtd_comentarios">%s comentários</string>
+    <string name="algum_dia">algum dia</string>
 
     <string-array name="topics_array">
         <item>Flutter</item>
         <item>React</item>
         <item>MySQL</item>
     </string-array>
-
 
 </resources>

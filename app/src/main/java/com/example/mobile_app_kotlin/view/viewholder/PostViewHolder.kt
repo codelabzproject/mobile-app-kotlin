@@ -6,6 +6,7 @@ import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentPostTimelineBinding
 import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.squareup.picasso.Picasso
 
 class PostViewHolder(
@@ -15,47 +16,51 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
     // Atribui valores aos elementos de interface
-    fun bindData(postModel: PostModel, position: Int, isSelected: Boolean) {
+    fun bindData(postModel: PostModel) {
         itemBinding.titlePost.text = postModel.title
         itemBinding.contentPost.text = postModel.content
-        itemBinding.commentsPosts.text = postModel.comments.toString()
-        itemBinding.countLikes.text = if (postModel.points >= 0) {
-            postModel.points.toString()
-        } else {
-            "0"
-        }
+        itemBinding.countLikes.text = postModel.points.toString()
 
-        val userInfoPost =
-            context.getString(
-                R.string.enviado_por_user_em_data,
-                postModel.user.name,
-                postModel.createdIn ?: "algum dia"
-            )
-
+        val userInfoPost = context.getString(
+            R.string.enviado_por_user_em_data,
+            postModel.user.name,
+            context.getString(R.string.algum_dia)
+        )
         itemBinding.userInfoPost.text = userInfoPost
+
+        val qtdCommentsPost = context.getString(
+            R.string.qtd_comentarios,
+            postModel.comments.toString()
+        )
+        itemBinding.commentsPosts.text = qtdCommentsPost
+
         itemBinding.nameTopic.text = postModel.topic?.name
 
         Picasso.get()
-//            .load(postModel.topic?.image)
             .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
             .into(itemBinding.svgTopicPost)
+
     }
 
-    fun onClickLikeButton() {
+    fun onClickLikeButton(postModel: PostModel, riseModel: RiseModel?) {
         itemBinding.likePostButton.setOnClickListener {
-            postListener?.onClickLikeButton(adapterPosition)
+            postListener?.onClickLikeButton(adapterPosition, postModel.idPost)
+
+            riseModel?.let {
+                postModel.points = it.postPointTotal
+                val imageLike = if (riseModel.userHasVoted) {
+                    R.drawable.like_up_enable
+                } else {
+                    R.drawable.like_up_disabled
+                }
+                itemBinding.likePostButton.setImageResource(imageLike)
+            }
         }
     }
 
     fun onClickPost() {
         itemBinding.root.setOnClickListener {
             postListener?.onClickPost(adapterPosition)
-        }
-    }
-
-    fun onClickDislikeButton() {
-        itemBinding.dislikePostButton.setOnClickListener {
-            postListener?.onClickDislikeButton(adapterPosition)
         }
     }
 }

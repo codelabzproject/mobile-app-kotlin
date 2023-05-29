@@ -5,23 +5,26 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mobile_app_kotlin.service.listener.APIListener
+import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.example.mobile_app_kotlin.service.model.response.ValidationModel
 import com.example.mobile_app_kotlin.service.repository.PostRepository
+import com.example.mobile_app_kotlin.service.repository.SecurityPreferences
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     private val postRepository = PostRepository(application.applicationContext)
-    private var taskFilter = 0
+    val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private val _posts = MutableLiveData<List<PostModel>>()
     val posts: LiveData<List<PostModel>> = _posts
 
-    private val _post = MutableLiveData<PostModel>()
-    val post: LiveData<PostModel> = _post
+    private val _post = MutableLiveData<PostExpandedModel>()
+    val post: LiveData<PostExpandedModel> = _post
 
-    private val _newCountPost = MutableLiveData<ValidationModel>()
-    val newCountPost: LiveData<ValidationModel> = _newCountPost
+    private val _riseModel = MutableLiveData<RiseModel>()
+    val riseModel: LiveData<RiseModel> = _riseModel
 
     private val selectedPost: MutableLiveData<PostModel> = MutableLiveData()
 
@@ -38,9 +41,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getPostById(idPost: Int) {
-        postRepository.getPostById(idPost, object : APIListener<PostModel> {
-            override fun onSuccess(result: PostModel) {
-
+        postRepository.getPostById(idPost, object : APIListener<PostExpandedModel> {
+            override fun onSuccess(result: PostExpandedModel) {
                 _post.value = result
             }
 
@@ -52,8 +54,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     fun createPost() {
         postRepository.createPost(object : APIListener<PostModel> {
-            override fun onSuccess(result: PostModel) {
-            }
+            override fun onSuccess(result: PostModel) {}
 
             override fun onFailure(message: String) {}
         }
@@ -62,23 +63,9 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setLikePost(idPost: Int, idUser: Int) {
-        postRepository.setLikePost(idPost, idUser, object : APIListener<Void> {
-            override fun onSuccess(result: Void) {
-
-                _newCountPost.value = ValidationModel()
-            }
-
-            override fun onFailure(message: String) {
-                _newCountPost.value = ValidationModel(message)
-            }
-        }
-        )
-    }
-
-    fun setDislikePost(idPost: Int, idUser: Int) {
-        postRepository.setDislikePost(idPost, idUser, object : APIListener<String> {
-            override fun onSuccess(result: String) {
-                _newCountPost.value = ValidationModel()
+        postRepository.setLikePost(idPost, idUser, object : APIListener<RiseModel> {
+            override fun onSuccess(result: RiseModel) {
+                _riseModel.value = result
             }
 
             override fun onFailure(message: String) {
@@ -89,14 +76,13 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-
-    fun setSelectedPost(post: PostModel) {
-        selectedPost.value = post
-    }
-
-    fun getSelectedPost(): LiveData<PostModel> {
-        return selectedPost
-    }
+//    fun setSelectedPost(post: PostModel) {
+//        selectedPost.value = post
+//    }
+//
+//    fun getSelectedPost(): LiveData<PostModel> {
+//        return selectedPost
+//    }
 
     // Restante do código do ViewModel
 

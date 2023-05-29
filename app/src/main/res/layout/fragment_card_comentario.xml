@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".view.CardCommentFragment">
 
     <FrameLayout
@@ -33,17 +33,21 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imageUserComment"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_gravity="top|center"
                         android:src="@drawable/profile_picture" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <View
+                    android:layout_width="2dp"
                     android:layout_height="60dp"
-                    android:layout_gravity="top|center"
-                    android:background="@color/code_text"></LinearLayout>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/code_text">
+
+                </View>
             </LinearLayout>
 
             <LinearLayout
@@ -71,23 +75,28 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/username_user_comment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="apelido_do_usuario"
+                            android:text="@string/apelido_da_pessoa"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/sharedIn"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="• Há 3 dias"
-                            android:textColor=" #818384"
-                            android:textSize="10dp" />
+                            android:layout_marginLeft="8dp"
+                            android:maxLines="1"
+                            android:text="@string/enviado_em"
+                            android:textColor="@color/code_grey_normal"
+                            android:textSize="12sp" />
+
                     </LinearLayout>
 
 
                     <TextView
+                        android:id="@+id/contentComment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -104,20 +113,22 @@
                         android:gravity="bottom|start"
                         android:orientation="horizontal">
 
-<!--                        <ImageView-->
-<!--                            android:layout_width="10dp"-->
-<!--                            android:layout_height="10dp"-->
-<!--                            android:layout_marginTop="12dp"-->
-<!--                            android:layout_marginRight="5dp"-->
-<!--                            android:src="@drawable/heart_like_icon" />-->
+                        <ImageView
+                            android:id="@+id/likeIcon"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/heart_like_icon" />
 
                         <TextView
+                            android:id="@+id/qtdLikesComment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="4dp"
-                            android:text="3 Curtidas"
+                            android:layout_marginStart="4dp"
+                            android:text="@string/s_curtidas"
                             android:textColor="@color/code_grey_normal"
-                            android:textSize="8sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
                 </LinearLayout>

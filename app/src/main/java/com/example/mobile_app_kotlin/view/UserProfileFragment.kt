@@ -38,16 +38,11 @@ class UserProfileFragment : Fragment() {
 
         val listener = object : PostListener {
             override fun onClickPost(position: Int) {
-
             }
 
-            override fun onClickLikeButton(position: Int) {
-
+            override fun onClickLikeButton(position: Int, idPost: Int) {
             }
 
-            override fun onClickDislikeButton(position: Int) {
-
-            }
         }
         postAdapter.attachListener(listener)
 

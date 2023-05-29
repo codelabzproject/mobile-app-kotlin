@@ -2,7 +2,9 @@ package com.example.mobile_app_kotlin.service.repository.remote
 
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
 import com.example.mobile_app_kotlin.service.model.request.UserRequest
+import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.example.mobile_app_kotlin.service.model.response.UserModel
 import retrofit2.Call
 import retrofit2.http.*
@@ -15,7 +17,7 @@ interface PostService {
     @GET("posts/{idPost}")
     fun getPostById(
         @Path(value = "idPost", encoded = true) idPost: Int
-    ): Call<PostModel>
+    ): Call<PostExpandedModel>
 
     @POST("posts")
     fun createPost(
@@ -26,13 +28,5 @@ interface PostService {
     fun likePost(
         @Path("idPost", encoded = true) idPost: Int,
         @Path("idUser", encoded = true) idUser: Int,
-    ): Call<Void>
-
-
-    @PUT("posts/down/{idPost}/{idUser}")
-    fun dislikePost(
-        @Path(value = "idPost", encoded = true) idPost: Int,
-        @Path(value = "idUser", encoded = true) idUser: Int
-    ): Call<String>
-
+    ): Call<RiseModel>
 }

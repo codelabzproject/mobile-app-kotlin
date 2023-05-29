@@ -48,23 +48,24 @@ class HomeFragment : Fragment() {
         binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllPosts.adapter = adapter
 
-        cardPost = CardPostFragment(adapter, postViewModel)
+        cardPost = CardPostFragment(postViewModel, adapter)
 
         val listener = object : PostListener {
 
             override fun onClickPost(position: Int) {
-                cardPost.onClickPost(position)
-            }
-
-            override fun onClickLikeButton(position: Int) {
-                cardPost.onLikeButtonClick(
-                    position,
-                    loginViewModel.loadUserIdLogged()
+                val bundle = Bundle()
+                bundle.putInt("postId", adapter.getItem(position).idPost)
+                findNavController().navigate(
+                    R.id.action_timelineFragment_to_postExpandedFragment,
+                    bundle
                 )
             }
 
-            override fun onClickDislikeButton(position: Int) {
-                TODO("Not yet implemented")
+            override fun onClickLikeButton(position: Int, idPost: Int) {
+                cardPost.onLikeButtonClick(
+                    idPost,
+                    loginViewModel.loadUserIdLogged()
+                )
             }
         }
 
@@ -102,16 +103,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun observe() {
-        loginViewModel.name.observe(viewLifecycleOwner) {
-            binding.usernameUser.text = it
+        loginViewModel.name.observe(viewLifecycleOwner) { name ->
+            binding.usernameUser.text = name
 
             Picasso.get()
                 .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
                 .into(binding.avatarUser)
         }
 
-        postViewModel.posts.observe(viewLifecycleOwner) {
-            adapter.updatePosts(it)
+        postViewModel.posts.observe(viewLifecycleOwner) { posts ->
+            adapter.updatePosts(posts)
+        }
+
+        postViewModel.riseModel.observe(viewLifecycleOwner) { riseModel ->
+            riseModel?.let {
+                adapter.updateRiseModel(it)
+            }
         }
     }
+
 }

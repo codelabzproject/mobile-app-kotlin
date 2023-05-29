@@ -2,7 +2,7 @@ package com.example.mobile_app_kotlin.service.model.response
 
 import com.google.gson.annotations.SerializedName
 
-class PostModel(
+class PostExpandedModel(
     @SerializedName("idPost")
     val idPost: Int,
 
@@ -12,24 +12,27 @@ class PostModel(
     @SerializedName("content")
     val content: String,
 
-    @SerializedName("comments")
-    val comments: Int,
-
-//    @SerializedName("createdIn")
-//    val createdIn: String?,
-
     @SerializedName("owner")
     val user: UserModel,
 
     @SerializedName("topic")
-    var topic: TopicModel? = null,
+    val topic: TopicModel,
 
-    @SerializedName("doubt")
-    var doubt: Boolean = false,
+    @SerializedName("comments")
+    val comments: List<CommentModel>,
+
+    @SerializedName("answer")
+    val answer: AnswerModel,
 
     @SerializedName("points")
-    var points: Int = 0,
+    val points: Int,
 
     @SerializedName("userHasVoted")
-    var userHasVoted: Boolean = false,
+    val userHasVoted: Boolean,
+
+//    @SerializedName("createdIn")
+//    val createdIn: String,
+
+    @SerializedName("doubt")
+    val doubt: Boolean
 )

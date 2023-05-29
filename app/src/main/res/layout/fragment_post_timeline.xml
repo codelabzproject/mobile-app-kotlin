@@ -40,7 +40,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="top|center"
                         android:background="@null"
-                        android:src="@drawable/like_up_button" />
+                        android:src="@drawable/like_up_disabled" />
 
                     <TextView
                         android:id="@+id/countLikes"
@@ -53,13 +53,13 @@
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
-                    <ImageButton
-                        android:id="@+id/dislikePostButton"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:background="@null"
-                        android:layout_gravity="center|bottom"
-                        android:src="@drawable/dislike_down_button" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/dislikePostButton"-->
+<!--                        android:layout_width="18dp"-->
+<!--                        android:layout_height="18dp"-->
+<!--                        android:background="@null"-->
+<!--                        android:layout_gravity="center|bottom"-->
+<!--                        android:src="@drawable/dislike_down_button" />-->
 
                 </LinearLayout>
             </LinearLayout>
@@ -161,7 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="4dp"
-                            android:text="4 comentários"
+                            android:text="@string/qtd_comentarios"
                             android:textColor="@color/code_grey_normal"
                             android:textSize="12sp" />
 

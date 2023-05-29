@@ -3,7 +3,9 @@ package com.example.mobile_app_kotlin.service.repository
 import android.content.Context
 import com.example.mobile_app_kotlin.service.listener.APIListener
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
+import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.example.mobile_app_kotlin.service.repository.remote.PostService
 import com.example.mobile_app_kotlin.service.repository.remote.RetrofitClient
 import retrofit2.Callback
@@ -34,7 +36,7 @@ class PostRepository(context: Context): BaseRepository(context) {
         executeCall(remote.createPost(post), listener)
     }
 
-    fun getPostById(idPost: Int, listener: APIListener<PostModel>) {
+    fun getPostById(idPost: Int, listener: APIListener<PostExpandedModel>) {
 
 //        if (!isConnectionAvailable()) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
@@ -44,7 +46,7 @@ class PostRepository(context: Context): BaseRepository(context) {
         executeCall(remote.getPostById(idPost), listener)
     }
 
-    fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<Void>) {
+    fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<RiseModel>) {
 
 //        if (!isConnectionAvailable()) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
@@ -52,15 +54,5 @@ class PostRepository(context: Context): BaseRepository(context) {
 //        }
 
         executeCall(remote.likePost(idPost, idUser), listener)
-    }
-    
-    fun setDislikePost(idPost: Int, idUser: Int, listener: APIListener<String>) {
-
-//        if (!isConnectionAvailable()) {
-//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
-//            return
-//        }
-
-        executeCall(remote.dislikePost(idPost, idUser), listener)
     }
 }
