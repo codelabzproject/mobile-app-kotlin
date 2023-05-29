@@ -16,7 +16,22 @@ class CreatePostActivity : AppCompatActivity() {
     val topicsMap = mapOf<Int, String>(
         1 to "Flutter",
         2 to "React",
-        3 to "Java"
+        3 to "Java",
+        4 to "Java",
+        5 to "Java",
+        6 to "Java",
+        7 to "Java",
+        8 to "Java",
+        9 to "Java",
+        10 to "Java",
+        11 to "Java",
+        13 to "Java",
+        14 to "Java",
+        15 to "Java",
+        16 to "Java",
+        17 to "Java",
+        18 to "Java",
+        19 to "Java",
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

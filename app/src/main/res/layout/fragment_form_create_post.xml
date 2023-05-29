@@ -104,12 +104,18 @@
 
                 <Spinner
                     android:id="@+id/spinnerTopics"
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_weight="1"
                     android:background="@drawable/seta"
-                    android:backgroundTint="@color/code_text" />
+                    android:backgroundTint="@color/code_text"
+                    android:dropDownWidth="match_parent"
+                    android:minWidth="200dp"
+                    android:popupBackground="@color/code_background_black"
+                    android:spinnerMode="dialog"
+                    android:visibility="visible" />
 
             </LinearLayout>
 

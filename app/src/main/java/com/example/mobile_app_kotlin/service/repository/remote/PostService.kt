@@ -12,7 +12,9 @@ import retrofit2.http.*
 interface PostService {
 
     @GET("posts")
-    fun getPosts(): Call<List<PostModel>>
+    fun getPosts(
+        @Query("idUser") idUser: Int
+    ): Call<List<PostModel>>
 
     @GET("posts/{idPost}")
     fun getPostById(

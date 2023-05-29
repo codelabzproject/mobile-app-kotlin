@@ -28,10 +28,10 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     private val selectedPost: MutableLiveData<PostModel> = MutableLiveData()
 
-    fun getPosts() {
-        postRepository.getPosts(object : APIListener<List<PostModel>> {
+    fun getPosts(idUser: Int) {
+        postRepository.getPosts(idUser, object : APIListener<List<PostModel>> {
             override fun onSuccess(result: List<PostModel>) {
-                _posts.value = result
+                _posts.value = result.asReversed()
             }
 
             override fun onFailure(message: String) {}

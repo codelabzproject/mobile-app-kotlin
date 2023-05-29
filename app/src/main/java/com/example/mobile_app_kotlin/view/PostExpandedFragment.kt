@@ -119,6 +119,13 @@ class PostExpandedFragment : Fragment() {
                 .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
                 .into(binding.postExpandedFragment.svgTopicPost)
 
+            val imageLike = if (postExpandedModel.userHasVoted) {
+                R.drawable.like_up_enable
+            } else {
+                R.drawable.like_up_disabled
+            }
+            binding.postExpandedFragment.likePostButton.setImageResource(imageLike)
+
             commentAdapter.updateComments(postExpandedModel.comments)
 
         }

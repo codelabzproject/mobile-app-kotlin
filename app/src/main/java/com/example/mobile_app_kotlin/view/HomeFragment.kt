@@ -66,6 +66,15 @@ class HomeFragment : Fragment() {
                     idPost,
                     loginViewModel.loadUserIdLogged()
                 )
+                postViewModel.getPosts(loginViewModel.loadUserIdLogged())
+
+//                postViewModel.riseModel.observe(viewLifecycleOwner) { riseModel ->
+//                    val post = adapter.getItem(position)
+//                    post.points = riseModel.postPointTotal
+//                    post.userHasVoted = riseModel.userHasVoted
+//                    adapter.notifyItemChanged(position)
+//                    postViewModel.riseModel.removeObservers(viewLifecycleOwner)
+//                }
             }
         }
 
@@ -99,7 +108,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        postViewModel.getPosts()
+        postViewModel.getPosts(loginViewModel.loadUserIdLogged())
     }
 
     private fun observe() {
@@ -113,12 +122,6 @@ class HomeFragment : Fragment() {
 
         postViewModel.posts.observe(viewLifecycleOwner) { posts ->
             adapter.updatePosts(posts)
-        }
-
-        postViewModel.riseModel.observe(viewLifecycleOwner) { riseModel ->
-            riseModel?.let {
-                adapter.updateRiseModel(it)
-            }
         }
     }
 
