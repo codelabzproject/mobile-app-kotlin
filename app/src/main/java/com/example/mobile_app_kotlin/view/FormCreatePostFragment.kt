@@ -41,69 +41,6 @@ class FormCreatePostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val buttonCreatePost = view.findViewById<FloatingActionButton>(R.id.button_create_post)
-
-        buttonCreatePost.setOnClickListener {
-
-            // Faça o que desejar ao clicar no botão
-            Toast.makeText(context, "Botão clicado", Toast.LENGTH_SHORT).show()
-        }
-
-        val linearLayout = view.findViewById<LinearLayout>(R.id.topicsSelection)
-        linearLayout.setOnClickListener {
-            val dialog = Dialog(requireContext())
-            dialog.setContentView(R.layout.topic_item_layout)
-            findNavController().navigate(R.id.action_forgetPasswordFragment_to_loginFragment)
-            // Configurar a lista de opções clicáveis no modal
-            val recyclerView = dialog.findViewById<RecyclerView>(R.id.recycler_all_posts)
-//            val adapter = YourAdapter(optionsList) // Substitua YourAdapter e optionsList com os seus valores reais
-//            recyclerView.adapter = adapter
-//            recyclerView.layoutManager = LinearLayoutManager(context)
-
-            dialog.show()
-        }
-
-
-        spinner = view.findViewById(R.id.spinnerTopics)
-
-        spinner.setOnItemSelectedListener(object : OnItemSelectedListener{
-                override fun onItemSelected(parent: AdapterView<*>?,
-                                            view: View, position: Int,
-                                            id: Long) {
-                    selectedTopic = topicsMap.filterValues { it == topicsMap.values.toList()[position] }.entries.first().key
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
-            }
-        )
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        val ad: ArrayAdapter<String> = ArrayAdapter<String>(
-            view.context,
-            android.R.layout.simple_spinner_item,
-            topicsMap.values.toTypedArray())
-
-        // set simple layout resource file
-        // for each item of spinner
-        ad.setDropDownViewResource(
-            android.R.layout.simple_spinner_dropdown_item)
-
-        // Set the ArrayAdapter (ad) data on the
-        // Spinner which binds data to spinner
-        spinner.adapter = ad
-
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.planets_array,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            // Specify the layout to use when the list of choices appears
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            // Apply the adapter to the spinner
-//            spinner.adapter = adapter
-//        }
 
 
     }

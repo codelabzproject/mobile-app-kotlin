@@ -4,70 +4,105 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
+import androidx.lifecycle.ViewModelProvider
 import com.example.mobile_app_kotlin.R
+import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
+import com.example.mobile_app_kotlin.service.model.response.SpinnerItem
+import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
+import com.example.mobile_app_kotlin.viewmodel.PostViewModel
+import com.example.mobile_app_kotlin.viewmodel.TopicViewModel
 
 class CreatePostActivity : AppCompatActivity() {
+    private lateinit var selectedTopic: SpinnerItem
+    private lateinit var selectedTypePosts: SpinnerItem
 
-    lateinit var spinner: Spinner
-    var selectedTopic:Int = 0
-
-    val topicsMap = mapOf<Int, String>(
-        1 to "Flutter",
-        2 to "React",
-        3 to "Java",
-        4 to "Java",
-        5 to "Java",
-        6 to "Java",
-        7 to "Java",
-        8 to "Java",
-        9 to "Java",
-        10 to "Java",
-        11 to "Java",
-        13 to "Java",
-        14 to "Java",
-        15 to "Java",
-        16 to "Java",
-        17 to "Java",
-        18 to "Java",
-        19 to "Java",
-    )
+    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var topicViewModel: TopicViewModel
+    private lateinit var postViewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
         supportActionBar?.hide()
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        topicViewModel = ViewModelProvider(this).get(TopicViewModel::class.java)
+        postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
 
-        spinner = findViewById(R.id.spinnerTopics)
+        topicViewModel.getTopics()
 
-        spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?,
-                                        view: View, position: Int,
-                                        id: Long) {
-                selectedTopic = topicsMap.filterValues { it == topicsMap.values.toList()[position] }.entries.first().key
+        val spinnerTopics = findViewById<Spinner>(R.id.spinner_topics)
+        val spinnerTypesPosts = findViewById<Spinner>(R.id.spinner_types_posts)
+
+        val listTypesPost = listOf(
+            SpinnerItem(0, R.drawable.circulo, "Escolha um tipo de postagem"),
+            SpinnerItem(1, R.drawable.discussao_icon, "Discussão"),
+            SpinnerItem(2, R.drawable.duvida_icon, "Dúvida"),
+        )
+        topicViewModel.topics.observe(this) { topics ->
+            val listTopics: List<SpinnerItem> =
+                listOf(SpinnerItem(0, R.drawable.circulo, "Escolha um tópico"))
+
+            val updatedTopics = listTopics + topics.map { topic ->
+                SpinnerItem(topic.idTopic, topic.image?.toIntOrNull() ?: 0, topic.name)
             }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
+            val adapterTopics = CustomSpinnerAdapter(this, updatedTopics)
+
+            adapterTopics.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+            setupSpinner(spinnerTopics, updatedTopics, adapterTopics) {
+                selectedTopic = updatedTopics[it]
+            }
+
+            spinnerTopics.adapter = adapterTopics
+        }
+
+        val adapterTypePost = CustomSpinnerAdapter(this, listTypesPost)
+
+        setupSpinner(spinnerTypesPosts, listTypesPost, adapterTypePost) {
+            selectedTypePosts = listTypesPost[it]
+        }
+
+        adapterTypePost.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTypesPosts.adapter = adapterTypePost
+
+        val createPostButton = findViewById<Button>(R.id.button_create_post)
+        createPostButton.setOnClickListener {
+            handleForm()
+        }
+    }
+
+    private fun handleForm() {
+        val title = findViewById<EditText>(R.id.title_form_create_post).text.toString()
+        val content = findViewById<EditText>(R.id.content_form_create_post).text.toString()
+
+        val createPostRequest = CreatePostRequest(title, content, loginViewModel.loadUserIdLogged(), selectedTopic.id)
+        postViewModel.createPost(createPostRequest)
+    }
+
+    private fun setupSpinner(
+        spinner: Spinner,
+        items: List<SpinnerItem>,
+        adapter: CustomSpinnerAdapter,
+        onItemSelected: (position: Int) -> Unit
+    ) {
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                onItemSelected(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
-        )
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        val ad: ArrayAdapter<String> = ArrayAdapter<String>(
-            baseContext,
-            android.R.layout.simple_spinner_item,
-            topicsMap.values.toTypedArray())
-
-        // set simple layout resource file
-        // for each item of spinner
-        ad.setDropDownViewResource(
-            android.R.layout.simple_spinner_dropdown_item)
-
-        // Set the ArrayAdapter (ad) data on the
-        // Spinner which binds data to spinner
-        spinner.adapter = ad
-
     }
 }

@@ -40,8 +40,8 @@
 
     <color name="code_text">#818384</color>
 
-
-
+    <color name="spinner_text_color">#FFFFFFFF</color>
+    <color name="spinner_dropdown_text_color">#FFFFFFFF</color>
 
 
 </resources>

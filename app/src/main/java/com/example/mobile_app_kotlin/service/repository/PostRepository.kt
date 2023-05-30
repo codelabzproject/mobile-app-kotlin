@@ -11,7 +11,7 @@ import com.example.mobile_app_kotlin.service.repository.remote.RetrofitClient
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostRepository(context: Context): BaseRepository(context) {
+class PostRepository(context: Context) : BaseRepository(context) {
 
     private val remote = RetrofitClient.getService(PostService::class.java, context)
 
@@ -25,15 +25,17 @@ class PostRepository(context: Context): BaseRepository(context) {
         executeCall(remote.getPosts(idUser), listener)
     }
 
-    fun createPost(listener: APIListener<PostModel>) {
+    fun createPost(
+        createPostRequest: CreatePostRequest,
+        listener: APIListener<PostModel>,
+    ) {
 
 //        if (!isConnectionAvailable()) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
 //            return
 //        }
-        val post = CreatePostRequest("Título do post", "Conteúdo do post", 123, 456)
 
-        executeCall(remote.createPost(post), listener)
+        executeCall(remote.createPost(createPostRequest), listener)
     }
 
     fun getPostById(idPost: Int, listener: APIListener<PostExpandedModel>) {
@@ -42,7 +44,7 @@ class PostRepository(context: Context): BaseRepository(context) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
 //            return
 //        }
-        
+
         executeCall(remote.getPostById(idPost), listener)
     }
 

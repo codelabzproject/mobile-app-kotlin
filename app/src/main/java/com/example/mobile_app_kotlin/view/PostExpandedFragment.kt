@@ -58,7 +58,7 @@ class PostExpandedFragment : Fragment() {
         val likePostButton = view.findViewById<ImageButton>(R.id.likePostButton)
 
         likePostButton.setOnClickListener {
-            postViewModel.post.value?.let { it1 ->
+            postViewModel.postExpanded.value?.let { it1 ->
                 cardPost.onLikeButtonClick(
                     it1.idPost,
                     postViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
@@ -84,7 +84,7 @@ class PostExpandedFragment : Fragment() {
 
 
     private fun observe() {
-        postViewModel.post.observe(viewLifecycleOwner) { postExpandedModel ->
+        postViewModel.postExpanded.observe(viewLifecycleOwner) { postExpandedModel ->
             binding.postExpandedFragment.nameTopic.text = postExpandedModel.topic.name
 
             binding.postExpandedFragment.titlePost.text = postExpandedModel.title
