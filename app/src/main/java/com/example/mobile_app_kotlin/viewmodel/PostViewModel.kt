@@ -55,8 +55,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun createPost(createPostRequest: CreatePostRequest) {
-        postRepository.createPost(createPostRequest, object : APIListener<PostModel> {
+    fun createDiscussion(createPostRequest: CreatePostRequest) {
+        postRepository.createDiscussion(createPostRequest, object : APIListener<PostModel> {
             override fun onSuccess(result: PostModel) {
                 _post.value = result
             }
@@ -64,7 +64,17 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
             override fun onFailure(message: String) {}
         }
         )
+    }
 
+    fun createDoubt(createPostRequest: CreatePostRequest) {
+        postRepository.createDoubt(createPostRequest, object : APIListener<PostModel> {
+            override fun onSuccess(result: PostModel) {
+                _post.value = result
+            }
+
+            override fun onFailure(message: String) {}
+        }
+        )
     }
 
     fun setLikePost(idPost: Int, idUser: Int) {

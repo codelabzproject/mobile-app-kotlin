@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
@@ -79,8 +80,27 @@ class CreatePostActivity : AppCompatActivity() {
         val title = findViewById<EditText>(R.id.title_form_create_post).text.toString()
         val content = findViewById<EditText>(R.id.content_form_create_post).text.toString()
 
-        val createPostRequest = CreatePostRequest(title, content, loginViewModel.loadUserIdLogged(), selectedTopic.id)
-        postViewModel.createPost(createPostRequest)
+        val createPostRequest = CreatePostRequest(
+            title,
+            content,
+            loginViewModel.loadUserIdLogged(),
+            selectedTopic.id,
+        )
+
+        if (selectedTypePosts.id != 0) {
+            if (selectedTopic.id == 1) {
+                postViewModel.createDiscussion(createPostRequest)
+            } else {
+                postViewModel.createDoubt(createPostRequest)
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "Selecione qual vai ser o tipo de postagem",
+                Toast.LENGTH_SHORT
+            )
+                .show()
+        }
     }
 
     private fun setupSpinner(

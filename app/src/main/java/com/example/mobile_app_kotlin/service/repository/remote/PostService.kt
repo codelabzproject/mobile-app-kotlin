@@ -1,11 +1,9 @@
 package com.example.mobile_app_kotlin.service.repository.remote
 
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
-import com.example.mobile_app_kotlin.service.model.request.UserRequest
 import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.RiseModel
-import com.example.mobile_app_kotlin.service.model.response.UserModel
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,7 +20,12 @@ interface PostService {
     ): Call<PostExpandedModel>
 
     @POST("posts")
-    fun createPost(
+    fun createDiscussion(
+        @Body createPostRequest: CreatePostRequest,
+    ): Call<PostModel>
+
+    @POST("posts/doubt")
+    fun createDoubt(
         @Body createPostRequest: CreatePostRequest,
     ): Call<PostModel>
 

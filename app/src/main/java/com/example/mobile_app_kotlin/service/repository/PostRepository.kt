@@ -8,8 +8,6 @@ import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.example.mobile_app_kotlin.service.repository.remote.PostService
 import com.example.mobile_app_kotlin.service.repository.remote.RetrofitClient
-import retrofit2.Callback
-import retrofit2.Response
 
 class PostRepository(context: Context) : BaseRepository(context) {
 
@@ -25,7 +23,7 @@ class PostRepository(context: Context) : BaseRepository(context) {
         executeCall(remote.getPosts(idUser), listener)
     }
 
-    fun createPost(
+    fun createDoubt(
         createPostRequest: CreatePostRequest,
         listener: APIListener<PostModel>,
     ) {
@@ -35,8 +33,22 @@ class PostRepository(context: Context) : BaseRepository(context) {
 //            return
 //        }
 
-        executeCall(remote.createPost(createPostRequest), listener)
+        executeCall(remote.createDiscussion(createPostRequest), listener)
     }
+
+    fun createDiscussion(
+        createPostRequest: CreatePostRequest,
+        listener: APIListener<PostModel>,
+    ) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        executeCall(remote.createDoubt(createPostRequest), listener)
+    }
+
 
     fun getPostById(idPost: Int, listener: APIListener<PostExpandedModel>) {
 
