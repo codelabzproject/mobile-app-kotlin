@@ -93,6 +93,7 @@ class CreatePostActivity : AppCompatActivity() {
             } else {
                 postViewModel.createDoubt(createPostRequest)
             }
+            finish()
         } else {
             Toast.makeText(
                 applicationContext,
