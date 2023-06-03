@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_app_kotlin.databinding.FragmentCardComentarioBinding
 import com.example.mobile_app_kotlin.service.listener.CommentListener
 import com.example.mobile_app_kotlin.service.model.response.CommentModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.example.mobile_app_kotlin.view.viewholder.CommentViewHolder
 
 class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
 
     private var listComments: List<CommentModel> = arrayListOf()
+    private var riseModel: RiseModel? = null
     private var listener: CommentListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
@@ -20,8 +22,9 @@ class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-//        val card = listPosts[position]
-        holder.bindData(listComments[position])
+        val comment = listComments[position]
+        holder.bindData(comment)
+        holder.onClickLikeButton(comment, riseModel)
 
         // Configurar os elementos do cartão na ViewHolder
 //        holder.onClickPost()
@@ -37,8 +40,13 @@ class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
         return listComments[position]
     }
 
-    fun updateComments(list: List<CommentModel>) {
-        listComments = list
+    fun updateComments(list: MutableList<CommentModel>) {
+        listComments = list.asReversed()
+        notifyDataSetChanged()
+    }
+
+    fun updateRiseModel(it: RiseModel) {
+        riseModel = it
         notifyDataSetChanged()
     }
 

@@ -89,7 +89,7 @@ class UserProfileFragment : Fragment() {
 
             // Carregar a imagem do perfil utilizando o Picasso
             Picasso.get()
-                .load("https://raw.githubusercontent.com/codelabzproject/public/main/png/avatares/avatar1.png")
+                .load(userProfileModel.user?.avatar)
                 .into(binding.avatarUser)
 
             if (userProfileModel.posts?.isNotEmpty() == true) {

@@ -5,7 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mobile_app_kotlin.service.listener.APIListener
+import com.example.mobile_app_kotlin.service.model.request.CreateCommentRequest
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
+import com.example.mobile_app_kotlin.service.model.response.CommentModel
 import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.RiseModel
@@ -26,8 +28,14 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     private val _post = MutableLiveData<PostModel>()
     val post: LiveData<PostModel> = _post
 
-    private val _riseModel = MutableLiveData<RiseModel>()
-    val riseModel: LiveData<RiseModel> = _riseModel
+    private val _risePostModel = MutableLiveData<RiseModel>()
+    val risePostModel: LiveData<RiseModel> = _risePostModel
+
+    private val _riseCommentModel = MutableLiveData<RiseModel>()
+    val riseCommentModel: LiveData<RiseModel> = _riseCommentModel
+
+    private val _commentModel = MutableLiveData<CommentModel>()
+    val commentModel: LiveData<CommentModel> = _commentModel
 
     private val selectedPost: MutableLiveData<PostModel> = MutableLiveData()
 
@@ -66,6 +74,17 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
+    fun createComment(createCommentRequest: CreateCommentRequest) {
+        postRepository.createComment(createCommentRequest, object : APIListener<CommentModel> {
+            override fun onSuccess(result: CommentModel) {
+                _commentModel.value = result
+            }
+
+            override fun onFailure(message: String) {}
+        }
+        )
+    }
+
     fun createDoubt(createPostRequest: CreatePostRequest) {
         postRepository.createDoubt(createPostRequest, object : APIListener<PostModel> {
             override fun onSuccess(result: PostModel) {
@@ -80,7 +99,19 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     fun setLikePost(idPost: Int, idUser: Int) {
         postRepository.setLikePost(idPost, idUser, object : APIListener<RiseModel> {
             override fun onSuccess(result: RiseModel) {
-                _riseModel.value = result
+                _risePostModel.value = result
+            }
+
+            override fun onFailure(message: String) {
+            }
+        }
+        )
+    }
+
+    fun setLikeComment(idComment: Int, idUser: Int) {
+        postRepository.setLikeComment(idComment, idUser, object : APIListener<RiseModel> {
+            override fun onSuccess(result: RiseModel) {
+                _riseCommentModel.value = result
             }
 
             override fun onFailure(message: String) {

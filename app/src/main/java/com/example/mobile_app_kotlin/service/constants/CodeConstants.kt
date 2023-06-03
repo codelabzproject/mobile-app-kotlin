@@ -30,6 +30,9 @@ class CodeConstants private constructor() {
         const val CODEFILTER = "codefilter"
     }
 
+    private val GITHUB_API_BASE_URL = "https://api.github.com/"
+
+
     // Filtro de tarefas
     object FILTER {
         const val ALL = 0

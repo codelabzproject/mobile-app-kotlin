@@ -19,7 +19,7 @@ class PostExpandedModel(
     val topic: TopicModel,
 
     @SerializedName("comments")
-    val comments: List<CommentModel>,
+    val comments: MutableList<CommentModel>,
 
     @SerializedName("answer")
     val answer: AnswerModel,

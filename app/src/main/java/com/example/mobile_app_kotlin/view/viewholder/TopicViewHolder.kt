@@ -17,8 +17,7 @@ class TopicViewHolder(
         itemBinding.nameTopic.text = topicModel.name
 
         Picasso.get()
-//            .load(topicModel.image)
-            .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+            .load(topicModel.image)
             .into(itemBinding.imageTopic)
     }
 

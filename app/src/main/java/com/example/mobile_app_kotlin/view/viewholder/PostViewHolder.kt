@@ -44,7 +44,7 @@ class PostViewHolder(
         itemBinding.likePostButton.setImageResource(imageLike)
 
         Picasso.get()
-            .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+            .load(postModel.topic?.image)
             .into(itemBinding.svgTopicPost)
 
     }

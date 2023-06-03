@@ -14,18 +14,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import android.widget.AdapterView.OnItemSelectedListener
 
 class FormCreatePostFragment : Fragment() {
-
-    private lateinit var spinnerOptions: Spinner
-
-    lateinit var spinner: Spinner
-    var selectedTopic:Int = 0
-
-    val topicsMap = mapOf<Int, String>(
-        1 to "Flutter",
-        2 to "React",
-        3 to "Java"
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -16,7 +16,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = LoginRepository(application.applicationContext)
     private val topicRepository = TopicRepository(application.applicationContext)
-    private val securityPreferences = SecurityPreferences(application.applicationContext)
+    val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private val _login = MutableLiveData<ValidationModel>()
     val login: LiveData<ValidationModel> = _login
@@ -52,6 +52,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     fun loadUserIdLogged(): Int {
         return securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
+    }
+
+    fun loadAvatarPng(): String {
+        return securityPreferences.get(CodeConstants.SHARED.USER_AVATAR)
     }
 
 

@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
+import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
@@ -116,7 +117,7 @@ class HomeFragment : Fragment() {
             binding.usernameUser.text = name
 
             Picasso.get()
-                .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+                .load(loginViewModel.loadAvatarPng())
                 .into(binding.avatarUser)
         }
 

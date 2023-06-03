@@ -16,7 +16,8 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
     ArrayAdapter<SpinnerItem>(context, 0, items) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.spinner_item, parent, false)
+        val view = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.spinner_item, parent, false)
         val item = getItem(position)
         val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
         val iconImageView = view.findViewById<ImageView>(R.id.iconImageView)
@@ -24,8 +25,10 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
         titleTextView.text = item?.title
         titleTextView.setTextColor(ContextCompat.getColor(context, R.color.spinner_item_text_color))
 
-        if (item?.iconResId != 0) {
-            item?.iconResId?.let { Picasso.get().load(it).into(iconImageView) }
+        if (item?.iconPng != null) {
+            Picasso.get().load(item.iconPng).into(iconImageView)
+        } else if (item?.iconDrawable != null) {
+            Picasso.get().load(item.iconDrawable).into(iconImageView)
         } else {
             iconImageView.setImageDrawable(null)
         }
@@ -34,7 +37,8 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
     }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.spinner_dropdown, parent, false)
+        val view = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.spinner_dropdown, parent, false)
         val item = getItem(position)
         val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
         val iconImageView = view.findViewById<ImageView>(R.id.iconImageView)
@@ -42,8 +46,10 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
         titleTextView.text = item?.title
         titleTextView.setTextColor(ContextCompat.getColor(context, R.color.spinner_item_text_color))
 
-        if (item?.iconResId != 0) {
-            item?.iconResId?.let { Picasso.get().load(it).into(iconImageView) }
+        if (item?.iconPng != null) {
+            Picasso.get().load(item.iconPng).into(iconImageView)
+        } else if (item?.iconDrawable != null) {
+            Picasso.get().load(item.iconDrawable).into(iconImageView)
         } else {
             iconImageView.setImageDrawable(null)
         }

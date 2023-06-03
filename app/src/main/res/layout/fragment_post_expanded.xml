@@ -104,6 +104,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/edit_new_comment"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/black"
@@ -127,7 +128,7 @@
                     android:src="@drawable/profile_picture" />
 
                 <Button
-                    android:id="@+id/button_public"
+                    android:id="@+id/button_public_comment"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:layout_marginLeft="225dp"

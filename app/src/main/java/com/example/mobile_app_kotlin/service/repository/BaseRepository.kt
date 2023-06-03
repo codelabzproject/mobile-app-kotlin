@@ -40,8 +40,12 @@ open class BaseRepository(val context: Context) {
                     if (errorBody != null) {
                         val errorString = errorBody.string()
                         listener.onFailure(errorString)
+                        Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT)
+                            .show()
                     } else {
                         listener.onFailure("Error body is null")
+                        Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
