@@ -78,7 +78,7 @@ class RegisterFragment : Fragment() {
     private fun observe() {
         viewModel.user.observe(viewLifecycleOwner) {
             if (it.status()) {
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_registerFragment_to_selectAvatarFragment)
                 Toast.makeText(context, "Cadastro efetuado com sucesso!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()

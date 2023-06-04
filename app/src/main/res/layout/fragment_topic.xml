@@ -19,26 +19,6 @@
             <include layout="@layout/header_codelabz" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="22px">
-
-                <EditText
-                    android:layout_width="340dp"
-                    android:layout_height="46dp"
-                    android:background="@drawable/edittext_rounded_border"
-                    android:paddingStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/search"
-                    android:textColorHint="@color/code_white_normal"
-                    android:textColor="@color/code_white_normal"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/list_topics_followeds_by_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

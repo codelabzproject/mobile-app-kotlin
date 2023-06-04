@@ -1,5 +1,6 @@
 package com.example.mobile_app_kotlin.service.repository.remote
 
+import com.example.mobile_app_kotlin.service.model.request.AvatarUserRequest
 import com.example.mobile_app_kotlin.service.model.request.UserRequest
 import com.example.mobile_app_kotlin.service.model.response.UserModel
 import retrofit2.Call
@@ -21,5 +22,11 @@ interface LoginService {
     fun recoveryPassword(
         @Body request: Map<String, String>
     ): Call<String>
+
+    @PUT("users/{id}")
+    fun updateAvatarUser(
+        @Path("id", encoded = true) idUser: Int,
+        @Body request: AvatarUserRequest
+    ): Call<Void>
 
 }

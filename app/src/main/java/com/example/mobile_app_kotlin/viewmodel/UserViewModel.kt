@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.APIListener
 import com.example.mobile_app_kotlin.service.model.response.UserProfileModel
 import com.example.mobile_app_kotlin.service.repository.SecurityPreferences
@@ -22,6 +23,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     fun getUser(idUser: Int) {
         userRepository.getUserProfile(idUser, object : APIListener<UserProfileModel> {
             override fun onSuccess(result: UserProfileModel) {
+                securityPreferences.store(CodeConstants.SHARED.USER_NAME, result.user?.name ?: "")
+                securityPreferences.store(CodeConstants.SHARED.USER_AVATAR, result.user?.avatar ?: "")
+                securityPreferences.store(CodeConstants.SHARED.NICK_NAME, result.user?.nickname ?: "")
+
                 _user.value = result
             }
 

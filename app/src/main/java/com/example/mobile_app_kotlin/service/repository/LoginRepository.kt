@@ -2,6 +2,7 @@ package com.example.mobile_app_kotlin.service.repository
 
 import android.content.Context
 import com.example.mobile_app_kotlin.service.listener.APIListener
+import com.example.mobile_app_kotlin.service.model.request.AvatarUserRequest
 import com.example.mobile_app_kotlin.service.model.request.UserRequest
 import com.example.mobile_app_kotlin.service.model.response.UserModel
 import com.example.mobile_app_kotlin.service.repository.remote.LoginService
@@ -48,5 +49,13 @@ class LoginRepository(context: Context) : BaseRepository(context) {
         executeCall(remote.recoveryPassword(request), listener)
     }
 
+    fun updateAvatarUser(idUser: Int, avatarUserRequest: AvatarUserRequest, listener: APIListener<Void>) {
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        executeCall(remote.updateAvatarUser(idUser, avatarUserRequest), listener)
+    }
 
 }

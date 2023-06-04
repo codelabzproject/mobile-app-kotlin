@@ -11,6 +11,7 @@ class CodeConstants private constructor() {
         const val USER_AVATAR = "useravatar"
         const val NICK_NAME = "nickname"
         const val USER_ID = "userid"
+        const val USER_PSWD = "userpswd"
     }
 
     // Requisições API
@@ -30,4 +31,18 @@ class CodeConstants private constructor() {
         const val TOPIC_ID = "topic_id"
         const val TOPIC_NAME = "topic_name"
     }
+
+    object AVATAR {
+        const val avatar1 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar1.png"
+        const val avatar2 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar2.png"
+        const val avatar3 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar3.png"
+        const val avatar4 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar4.png"
+        const val avatar5 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar5.png"
+        const val avatar6 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar6.png"
+        const val avatar7 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar7.png"
+        const val avatar8 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar8.png"
+        const val avatar9 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar9.png"
+        const val avatar10 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar10.png"
+    }
+
 }
