@@ -33,13 +33,17 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_timelineFragment_to_topicFragment"
-            app:destination="@id/topicFragment" />
+            app:destination="@id/topicFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/postExpandedFragment"
         android:name="com.example.mobile_app_kotlin.view.PostExpandedFragment"
         android:label="fragment_post_expanded"
-        tools:layout="@layout/fragment_post_expanded"/>
+        tools:layout="@layout/fragment_post_expanded" />
     <activity
         android:id="@+id/createPostActivity"
         android:name="com.example.mobile_app_kotlin.view.CreatePostActivity"
@@ -49,40 +53,60 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.mobile_app_kotlin.view.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" >
+        tools:layout="@layout/fragment_user_profile">
         <action
             android:id="@+id/action_userProfileFragment_to_postExpandedFragment"
-            app:destination="@id/postExpandedFragment" />
+            app:destination="@id/postExpandedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_userProfileFragment_to_configFragment"
-            app:destination="@id/configFragment" />
+            app:destination="@id/configFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
         android:name="com.example.mobile_app_kotlin.view.TopicFragment"
         android:label="fragment_topic"
-        tools:layout="@layout/fragment_topic" >
+        tools:layout="@layout/fragment_topic">
         <action
             android:id="@+id/action_topicFragment_to_topicExpandedFragment"
-            app:destination="@id/topicExpandedFragment" />
+            app:destination="@id/topicExpandedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/topicExpandedFragment"
         android:name="com.example.mobile_app_kotlin.view.TopicExpandedFragment"
         android:label="fragment_topic_expanded"
-        tools:layout="@layout/fragment_topic_expanded" >
+        tools:layout="@layout/fragment_topic_expanded">
         <action
             android:id="@+id/action_topicExpandedFragment_to_postExpandedFragment"
-            app:destination="@id/postExpandedFragment" />
+            app:destination="@id/postExpandedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/configFragment"
         android:name="com.example.mobile_app_kotlin.view.ConfigFragment"
         android:label="fragment_config"
-        tools:layout="@layout/fragment_config" >
+        tools:layout="@layout/fragment_config">
         <action
             android:id="@+id/action_configFragment_to_selectAvatarFragment2"
-            app:destination="@id/selectAvatarFragment2" />
+            app:destination="@id/selectAvatarFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/selectAvatarFragment2"
