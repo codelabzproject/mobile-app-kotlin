@@ -31,42 +31,25 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/border_cards"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="345dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@color/code_background_black"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="13dp"
-                    android:src="@drawable/circulo" />
-
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Escolha um tópico"
-                    android:textColor="@color/code_text"
-                    android:textSize="15sp" />
+                android:background="@color/code_background_black">
 
                 <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/seta"
-                    android:backgroundTint="@color/code_text" />
+                    android:id="@+id/spinner_topics"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/code_background_black"
+                    android:spinnerMode="dropdown"
+                    android:visibility="visible" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -78,37 +61,21 @@
             android:background="@drawable/border_cards"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="345dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@color/code_background_black"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="13dp" />
-
-                <TextView
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Escolha o tipo de postagem"
-                    android:textColor="@color/code_text"
-                    android:textSize="15sp" />
+                android:background="@color/code_background_black">
 
                 <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/seta"
-                    android:backgroundTint="@color/code_text" />
+                    android:id="@+id/spinner_types_posts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:popupBackground="@color/code_background_black"
+                    android:spinnerMode="dropdown"
+                    android:visibility="visible" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -118,6 +85,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/title_form_create_post"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
@@ -145,6 +113,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/content_form_create_post"
                     android:layout_width="345dp"
                     android:layout_height="match_parent"
                     android:background="@color/code_background_black"

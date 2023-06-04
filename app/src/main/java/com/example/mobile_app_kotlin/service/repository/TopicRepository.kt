@@ -2,6 +2,7 @@ package com.example.mobile_app_kotlin.service.repository
 
 import android.content.Context
 import com.example.mobile_app_kotlin.service.listener.APIListener
+import com.example.mobile_app_kotlin.service.model.response.TopicFollowModel
 import com.example.mobile_app_kotlin.service.model.response.TopicModel
 import com.example.mobile_app_kotlin.service.repository.local.CodeDatabase
 import com.example.mobile_app_kotlin.service.repository.remote.RetrofitClient
@@ -22,6 +23,19 @@ class TopicRepository(context: Context) : BaseRepository(context) {
 
         executeCall(remote.getTopics(), listener)
     }
+
+    fun getTopicsByUser(idUser: Int, listener: APIListener<List<TopicModel>>) {
+        executeCall(remote.getTopicsByUser(idUser), listener)
+    }
+
+    fun getTopicById(idTopic: Int, idUser: Int, listener: APIListener<TopicModel>) {
+        executeCall(remote.getTopicById(idTopic, idUser), listener)
+    }
+
+    fun setFollowTopic(idTopic: Int, idUser: Int, listener: APIListener<TopicFollowModel>) {
+        executeCall(remote.setFollowTopic(idTopic, idUser), listener)
+    }
+
 
     fun saveTopics(listTopics: List<TopicModel>) {
         database.clear()

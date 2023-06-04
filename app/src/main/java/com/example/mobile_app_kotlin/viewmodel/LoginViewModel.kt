@@ -6,19 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.APIListener
-import com.example.mobile_app_kotlin.service.model.response.TopicModel
 import com.example.mobile_app_kotlin.service.model.response.UserModel
 import com.example.mobile_app_kotlin.service.model.response.ValidationModel
+import com.example.mobile_app_kotlin.service.repository.LoginRepository
 import com.example.mobile_app_kotlin.service.repository.SecurityPreferences
 import com.example.mobile_app_kotlin.service.repository.TopicRepository
-import com.example.mobile_app_kotlin.service.repository.UserRepository
-import com.example.mobile_app_kotlin.service.repository.remote.RetrofitClient
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val userRepository = UserRepository(application.applicationContext)
+    private val userRepository = LoginRepository(application.applicationContext)
     private val topicRepository = TopicRepository(application.applicationContext)
-    private val securityPreferences = SecurityPreferences(application.applicationContext)
+    val securityPreferences = SecurityPreferences(application.applicationContext)
 
     private val _login = MutableLiveData<ValidationModel>()
     val login: LiveData<ValidationModel> = _login
@@ -50,6 +48,14 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     fun loadUserName() {
         _name.value = securityPreferences.get(CodeConstants.SHARED.NICK_NAME)
+    }
+
+    fun loadUserIdLogged(): Int {
+        return securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
+    }
+
+    fun loadAvatarPng(): String {
+        return securityPreferences.get(CodeConstants.SHARED.USER_AVATAR)
     }
 
 

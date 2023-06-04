@@ -26,7 +26,11 @@
             app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_loginFragment_to_timelineActivity"
-            app:destination="@id/timelineActivity" />
+            app:destination="@id/timelineActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -35,12 +39,19 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
+            android:id="@+id/action_registerFragment_to_selectAvatarFragment"
+            app:destination="@id/selectAvatarFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -62,5 +73,18 @@
         android:name="com.example.mobile_app_kotlin.view.TimelineActivity"
         android:label="activity_timeline"
         tools:layout="@layout/activity_timeline" />
+    <fragment
+        android:id="@+id/selectAvatarFragment"
+        android:name="com.example.mobile_app_kotlin.view.SelectAvatarFragment"
+        android:label="fragment_select_avatar"
+        tools:layout="@layout/fragment_select_avatar" >
+        <action
+            android:id="@+id/action_selectAvatarFragment_to_timelineActivity"
+            app:destination="@id/timelineActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
 </navigation>

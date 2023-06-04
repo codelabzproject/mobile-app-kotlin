@@ -1,28 +1,57 @@
 package com.example.mobile_app_kotlin.service.repository.remote
 
+import com.example.mobile_app_kotlin.service.model.request.CreateCommentRequest
 import com.example.mobile_app_kotlin.service.model.request.CreatePostRequest
-import com.example.mobile_app_kotlin.service.model.request.UserRequest
+import com.example.mobile_app_kotlin.service.model.response.CommentModel
+import com.example.mobile_app_kotlin.service.model.response.PostExpandedModel
 import com.example.mobile_app_kotlin.service.model.response.PostModel
-import com.example.mobile_app_kotlin.service.model.response.UserModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface PostService {
 
     @GET("posts")
-    fun getPosts(): Call<List<PostModel>>
+    fun getPosts(
+        @Query("idUser") idUser: Int,
+        @Query("sort") sort: Boolean = false
+    ): Call<List<PostModel>>
 
     @GET("posts/{idPost}")
     fun getPostById(
         @Path(value = "idPost", encoded = true) idPost: Int
-    ): Call<PostModel>
+    ): Call<PostExpandedModel>
+
+    @GET("posts/pesquisa/mobile/{idTopic}/{idUser}")
+    fun getPostsByIdTopic(
+        @Path(value = "idTopic", encoded = true) idTopic: Int,
+        @Path(value = "idUser", encoded = true) idUser: Int,
+    ): Call<List<PostModel>>
 
     @POST("posts")
-    fun createPost(
+    fun createDiscussion(
         @Body createPostRequest: CreatePostRequest,
     ): Call<PostModel>
 
+    @POST("posts/doubt")
+    fun createDoubt(
+        @Body createPostRequest: CreatePostRequest,
+    ): Call<PostModel>
+
+    @PUT("posts/rise/{idPost}/{idUser}")
+    fun likePost(
+        @Path("idPost", encoded = true) idPost: Int,
+        @Path("idUser", encoded = true) idUser: Int,
+    ): Call<RiseModel>
+
+    @PUT("posts/comment/{idComment}/{idUser}")
+    fun likeComment(
+        @Path("idComment", encoded = true) idComment: Int,
+        @Path("idUser", encoded = true) idUser: Int,
+    ): Call<RiseModel>
+
+    @POST("posts/comment")
+    fun createComment(
+        @Body createComment: CreateCommentRequest,
+    ): Call<CommentModel>
 }

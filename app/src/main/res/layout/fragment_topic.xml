@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/code_background_full_black"
+    tools:context=".view.TopicFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/header_codelabz" />
+
+            <LinearLayout
+                android:id="@+id/list_topics_followeds_by_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/dosis_regular"
+                    android:text="@string/topics_followed"
+                    android:textColor="@color/code_white_normal"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_topics_followeds"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spanCount="1"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/topic_item_layout" />
+
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                        <include layout="@layout/topic_item_layout"/>-->
+<!--                        <include layout="@layout/topic_item_layout"/>-->
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/dosis_regular"
+                    android:text="@string/topics"
+                    android:textColor="@color/code_white_normal"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_all_topics"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spanCount="1"
+                        tools:itemCount="19"
+                        tools:listitem="@layout/topic_item_layout" />
+
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+<!--                    <include layout="@layout/topic_item_layout"/>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>

@@ -1,57 +1,65 @@
 package com.example.mobile_app_kotlin.view.viewholder
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobile_app_kotlin.databinding.FragmentCardTimelineBinding
-import com.example.mobile_app_kotlin.service.listener.CodeListener
+import com.example.mobile_app_kotlin.R
+import com.example.mobile_app_kotlin.databinding.FragmentPostTimelineBinding
+import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.service.model.response.PostModel
+import com.example.mobile_app_kotlin.service.model.response.RiseModel
+import com.squareup.picasso.Picasso
 
-class PostViewHolder(private val itemBinding: FragmentCardTimelineBinding, val listener: CodeListener) :
-    RecyclerView.ViewHolder(itemBinding.root) {
+class PostViewHolder(
+    private val itemBinding: FragmentPostTimelineBinding,
+    private val postListener: PostListener?,
+    private val context: Context,
+) : RecyclerView.ViewHolder(itemBinding.root) {
 
-    /**
-     * Atribui valores aos elementos de interface
-     */
+    // Atribui valores aos elementos de interface
     fun bindData(postModel: PostModel) {
-
         itemBinding.titlePost.text = postModel.title
         itemBinding.contentPost.text = postModel.content
-        itemBinding.commentsPosts.text = postModel.comments.toString()
-        itemBinding.liskes.text = postModel.points.toString()
+        itemBinding.countLikes.text = postModel.points.toString()
 
-//        itemBinding.liskes.text = postModel.points.toString()
-//        itemBinding.commentsPosts.text = postModel.comments.toString()
+        val userInfoPost = context.getString(
+            R.string.enviado_por_user_em_data,
+            postModel.user.name,
+            context.getString(R.string.algum_dia)
+        )
+        itemBinding.userInfoPost.text = userInfoPost
 
-//        val date = SimpleDateFormat("yyyy-MM-dd").parse(postModel.createdIn)
-//        itemBinding.textDueDate.text = SimpleDateFormat("dd/MM/yyyy").format(date)
+        val qtdCommentsPost = context.getString(
+            R.string.qtd_comentarios,
+            postModel.comments.toString()
+        )
+        itemBinding.commentsPosts.text = qtdCommentsPost
 
-        // Faz o tratamento das imagens
-//        if (postModel.complete) {
-//            itemBinding.imageTask.setImageResource(R.drawable.ic_done)
-//        } else {
-//            itemBinding.imageTask.setImageResource(R.drawable.ic_todo)
-//        }
+        itemBinding.nameTopic.text = postModel.topic?.name
 
-//        // Eventos
-//        itemBinding.textDescription.setOnClickListener { listener.onListClick(postModel.id) }
-//        itemBinding.imageTask.setOnClickListener {
-//            if (postModel.complete) {
-//                listener.onUndoClick(postModel.id)
-//            } else {
-//                listener.onCompleteClick(postModel.id)
-//            }
-//        }
+        val imageLike = if (postModel.userHasVoted) {
+            R.drawable.like_up_enable
+        } else {
+            R.drawable.like_up_disabled
+        }
+        itemBinding.likePostButton.setImageResource(imageLike)
 
-//        itemBinding.textDescription.setOnLongClickListener {
-//            AlertDialog.Builder(itemView.context)
-//                .setTitle(R.string.remocao_de_tarefa)
-//                .setMessage(R.string.remover_tarefa)
-//                .setPositiveButton(R.string.sim) { dialog, which ->
-//                    listener.onDeleteClick(postModel.id)
-//                }
-//                .setNeutralButton(R.string.cancelar, null)
-//                .show()
-//            true
-//        }
+        Picasso.get()
+            .load(postModel.topic?.image)
+            .into(itemBinding.svgTopicPost)
 
+    }
+
+    fun onClickLikeButton(postModel: PostModel, riseModel: RiseModel?) {
+        itemBinding.likePostButton.setOnClickListener {
+            postListener?.onClickLikeButton(adapterPosition, postModel.idPost)
+        }
+
+
+    }
+
+    fun onClickPost() {
+        itemBinding.root.setOnClickListener {
+            postListener?.onClickPost(adapterPosition)
+        }
     }
 }

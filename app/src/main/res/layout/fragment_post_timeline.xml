@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
     android:paddingVertical="16dp"
-    tools:context=".view.CardTimelineFragment">
+    tools:context=".view.PostTimelineFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:background="@drawable/border_cards">
 
@@ -34,15 +34,17 @@
                     android:background="@drawable/border_card_intern_rating"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/like_post"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                    <ImageButton
+                        android:id="@+id/likePostButton"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:layout_gravity="top|center"
-                        android:src="@drawable/like_up_button" />
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/like_up_disabled" />
 
                     <TextView
-                        android:id="@+id/liskes"
+                        android:id="@+id/countLikes"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_gravity="center"
@@ -52,17 +54,19 @@
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
-                    <ImageView
-                        android:id="@+id/dislike_post"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center|bottom"
-                        android:src="@drawable/dislike_down_button" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/dislikePostButton"-->
+<!--                        android:layout_width="18dp"-->
+<!--                        android:layout_height="18dp"-->
+<!--                        android:background="@null"-->
+<!--                        android:layout_gravity="center|bottom"-->
+<!--                        android:src="@drawable/dislike_down_button" />-->
 
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/card_post"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -88,30 +92,18 @@
                         android:layout_marginLeft="4dp"
                         android:text="Flutter"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/userInfoPost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="Enviado por "
+                        android:maxLines="1"
+                        android:text="@string/enviado_por_user_em_data"
                         android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
+                        android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/user_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*apelido do usuario* "
-                        android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="há 3 dias"
-                        android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,18 +118,20 @@
                         android:id="@+id/title_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="Titulo da Postagem"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/content_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:maxLines="3"
                         android:text="Lorem ipsum dolor sit amet, consectetur ad i pi sc ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -146,7 +140,7 @@
                         android:layout_marginTop="2dp"
                         android:text="Clique para ver mais"
                         android:textColor="@color/code_grey_normal"
-                        android:textSize="8sp" />
+                        android:textSize="12sp" />
 
 
                     <LinearLayout
@@ -168,9 +162,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="4dp"
-                            android:text="4 comentários"
+                            android:text="@string/qtd_comentarios"
                             android:textColor="@color/code_grey_normal"
-                            android:textSize="8sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
                 </LinearLayout>

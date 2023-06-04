@@ -10,5 +10,4 @@
 
     <include layout="@layout/fragment_form_create_post" />
 
-
 </LinearLayout>

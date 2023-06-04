@@ -8,27 +8,53 @@
     android:orientation="vertical"
     tools:context=".view.HomeFragment">
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include layout="@layout/header_codelabz" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:background="@color/code_background_black">
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|bottom"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/logo_codelabz" />
+            <LinearLayout
+                android:id="@+id/buttonSeeHighTopics"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_card_perfil_timeline"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="20"
+                    android:gravity="start|center"
+                    android:layout_marginStart="12dp"
+                    android:text="Veja tópicos em alta"
+                    android:textColor="@color/code_grey_normal"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_weight="90"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/icon_search" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -37,14 +63,43 @@
             android:layout_height="80dp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="12dp">
+            android:paddingHorizontal="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="50"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_card_perfil_timeline"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Spinner
+                        android:id="@+id/filterPosts"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:dropDownWidth="match_parent"
+                        android:popupBackground="@color/code_background_black"
+                        android:spinnerMode="dropdown"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/profile_home_resumed"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_weight="50"
+                android:layout_marginStart="8dp"
                 android:layout_gravity="center"
-                android:background="@drawable/border_card_perfil_timeline">
+                android:background="@drawable/border_card_perfil_timeline"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/avatar_user"
@@ -56,48 +111,14 @@
 
                 <TextView
                     android:id="@+id/username_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="4dp"
-                    android:text="@string/apelido_da_pessoa"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:src="@drawable/icon_arrow_down"
-                    tools:ignore="RtlHardcoded" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="148dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/border_card_perfil_timeline"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="4dp"
-                    android:text="Veja tópicos em alta"
-                    android:textColor="@color/code_grey_normal"
-                    android:textSize="10sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:backgroundTint="@color/white"
-                    android:src="@drawable/icon_search" />
+                    android:maxLines="1"
+                    android:text="@string/apelido_da_pessoa"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -129,7 +150,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:spanCount="1"
                     tools:itemCount="7"
-                    tools:listitem="@layout/fragment_card_timeline" />
+                    tools:listitem="@layout/fragment_post_timeline" />
 
                 <!--                <androidx.recyclerview.widget.RecyclerView-->
                 <!--                    android:id="@+id/recycler_all_posts"-->

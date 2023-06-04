@@ -29,9 +29,13 @@
     <string name="profile_nickname">~@Rafinhas</string>
     <string name="profile_bio">Sou o Cara do TI</string>
     <string name="profile_followed_Topics">Topicos seguidos</string>
-    <string name="profile_total_topics">12 topicos</string>
+    <string name="profile_total_topics">%s tópicos</string>
     <string name="profile_no_post">Você não possui postagens ainda...</string>
     <string name="profile_no_post_to_share">Sinta-se a vontade pra compartilhar em nossa plataforma</string>
+
+    <!-- Strings related to Topic -->
+    <string name="topics_followed">Técnologias seguidas</string>
+    <string name="topics">Técnologias</string>
 
     <!-- Strings related to Retrofit Connection -->
     <string name="ERROR_UNEXPECTED">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>
@@ -49,7 +53,26 @@
     <string name="public_post">Publicar</string>
     <string name="button_add_new_post">Botão para adicionar nova postagem</string>
     <string name="apelido_da_pessoa">Apelido_da_pessoa</string>
-    <string name="profilepicture">ProfilePicture</string>
+    <string name="profilePicture">ProfilePicture</string>
     <string name="settings_profile_button">settings profile button</string>
+    <string name="search">Filtrar</string>
+    <string name="enviado_por_user_em_data">Enviado por %s em %s</string>
+    <string name="enviado_em">Enviado em %s</string>
+    <string name="s_curtidas">%s curtidas</string>
+    <string name="qtd_comentarios">%s comentários</string>
+    <string name="algum_dia">algum dia</string>
+
+    <string name="posts_in_topic_title_empty">Este tópico não tem nenhum post ainda...</string>
+    <string name="posts_in_topic_message_empty">Mas você pode ser o primeiro a postar</string>
+    <string name="verify_infos_request">Verifique as informações</string>
+    <string name="error_intern">Erro interno</string>
+    <string name="error_in_servidor">Erro no servidor</string>
+    <string name="insert_one_comment_before_continue">Insira um comentário antes de continuar</string>
+    <string name="nickname">Nickname</string>
+    <string name="insert_all_camps_to_continue">Preencha todos os campos para continuar</string>
+    <string name="register_sucess">Cadastro efetuado com sucesso!</string>
+    <string name="select_avatar_first_time">Antes da gente continuar, vamos selecionar seu avatar?</string>
+    <string name="update_your_avatar">Atualize aqui seu avatar</string>
+
 
 </resources>
