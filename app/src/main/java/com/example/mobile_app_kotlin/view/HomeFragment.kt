@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.LinearLayout
+import android.widget.Spinner
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
 import com.example.mobile_app_kotlin.service.listener.PostListener
+import com.example.mobile_app_kotlin.service.model.response.SpinnerItem
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
 import com.example.mobile_app_kotlin.viewmodel.PostViewModel
@@ -30,6 +33,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter = PostAdapter()
+
+    private lateinit var selectedFilterPost: SpinnerItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +71,14 @@ class HomeFragment : Fragment() {
                     idPost,
                     loginViewModel.loadUserIdLogged()
                 )
-                postViewModel.getPosts(loginViewModel.loadUserIdLogged())
+                postViewModel.risePostModel.removeObservers(viewLifecycleOwner)
+                postViewModel.risePostModel.observe(viewLifecycleOwner) { riseModel ->
+                    val post = adapter.getItem(position)
+                    post.points = riseModel.postPointTotal
+                    post.userHasVoted = riseModel.userHasVoted
+                    adapter.notifyItemChanged(position)
+                }
+//                postViewModel.getPosts(loginViewModel.loadUserIdLogged())
             }
         }
 
@@ -80,7 +92,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val fabButton = view.findViewById<FloatingActionButton>(R.id.button_add_new_post)
         fabButton.setOnClickListener {
@@ -96,6 +107,34 @@ class HomeFragment : Fragment() {
         seeHighTopics.setOnClickListener {
             findNavController().navigate(R.id.action_timelineFragment_to_topicFragment)
         }
+
+        val spinnerFilterPosts = view.findViewById<Spinner>(R.id.filterPosts)
+        val listFilterPosts = listOf(
+            SpinnerItem(
+                id = 0,
+                title = "Ordenar por"
+            ),
+            SpinnerItem(
+                id = 1,
+                title = "Mais recentes"
+            ),
+            SpinnerItem(
+                id = 2,
+                title = "Mais relevantes"
+            ),
+        )
+
+        val adapterFilterPosts = CustomSpinnerAdapter(requireContext(), listFilterPosts)
+
+        if (spinnerFilterPosts != null) {
+            setupSpinner(spinnerFilterPosts, listFilterPosts, adapterFilterPosts) {
+                selectedFilterPost = listFilterPosts[it]
+            }
+        }
+
+        adapterFilterPosts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerFilterPosts.adapter = adapterFilterPosts
+
     }
 
     override fun onResume() {
@@ -117,4 +156,32 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setupSpinner(
+        spinner: Spinner,
+        items: List<SpinnerItem>,
+        adapter: CustomSpinnerAdapter,
+        onItemSelected: (position: Int) -> Unit
+    ) {
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                onItemSelected(position)
+
+                if (position == 2) {
+                    postViewModel.getPosts(loginViewModel.loadUserIdLogged(), true)
+                } else if (position == 1){
+                    postViewModel.getPosts(loginViewModel.loadUserIdLogged(), false)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.mobile_app_kotlin.view
 
 import android.content.Context
+import android.opengl.Visibility
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,12 +27,15 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
         titleTextView.text = item?.title
         titleTextView.setTextColor(ContextCompat.getColor(context, R.color.spinner_item_text_color))
 
+        titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+
         if (item?.iconPng != null) {
             Picasso.get().load(item.iconPng).into(iconImageView)
         } else if (item?.iconDrawable != null) {
             Picasso.get().load(item.iconDrawable).into(iconImageView)
         } else {
             iconImageView.setImageDrawable(null)
+            iconImageView.visibility = View.GONE
         }
 
         return view
@@ -45,6 +50,7 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
 
         titleTextView.text = item?.title
         titleTextView.setTextColor(ContextCompat.getColor(context, R.color.spinner_item_text_color))
+        titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
 
         if (item?.iconPng != null) {
             Picasso.get().load(item.iconPng).into(iconImageView)
@@ -52,6 +58,7 @@ class CustomSpinnerAdapter(context: Context, items: List<SpinnerItem>) :
             Picasso.get().load(item.iconDrawable).into(iconImageView)
         } else {
             iconImageView.setImageDrawable(null)
+            iconImageView.visibility = View.GONE
         }
 
         return view

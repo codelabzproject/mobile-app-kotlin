@@ -38,13 +38,31 @@ class CreatePostActivity : AppCompatActivity() {
         val spinnerTypesPosts = findViewById<Spinner>(R.id.spinner_types_posts)
 
         val listTypesPost = listOf(
-            SpinnerItem(id = 0, iconDrawable = R.drawable.circulo, title = "Escolha um tipo de postagem"),
-            SpinnerItem(id = 1, iconDrawable =R.drawable.discussao_icon, title = "Discussão"),
-            SpinnerItem(id = 2, iconDrawable =R.drawable.duvida_icon, title = "Dúvida"),
+            SpinnerItem(
+                id = 0,
+                iconDrawable = R.drawable.circulo,
+                title = "Escolha um tipo de postagem"
+            ),
+            SpinnerItem(
+                id = 1,
+                iconDrawable = R.drawable.discussao_icon,
+                title = "Discussão"
+            ),
+            SpinnerItem(
+                id = 2,
+                iconDrawable = R.drawable.duvida_icon,
+                title = "Dúvida"
+            ),
         )
         topicViewModel.topics.observe(this) { topics ->
             val listTopics: List<SpinnerItem> =
-                listOf(SpinnerItem(id = 0, iconDrawable = R.drawable.circulo, title = "Escolha um tópico"))
+                listOf(
+                    SpinnerItem(
+                        id = 0,
+                        iconDrawable = R.drawable.circulo,
+                        title = "Escolha um tópico"
+                    )
+                )
 
             val updatedTopics = listTopics + topics.map { topic ->
                 SpinnerItem(id = topic.idTopic, iconPng = topic.image, title = topic.name)

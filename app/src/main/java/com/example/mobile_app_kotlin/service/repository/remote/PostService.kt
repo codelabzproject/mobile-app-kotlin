@@ -13,7 +13,8 @@ interface PostService {
 
     @GET("posts")
     fun getPosts(
-        @Query("idUser") idUser: Int
+        @Query("idUser") idUser: Int,
+        @Query("sort") sort: Boolean = false
     ): Call<List<PostModel>>
 
     @GET("posts/{idPost}")
