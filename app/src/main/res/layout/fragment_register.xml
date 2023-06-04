@@ -87,6 +87,23 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/inputNicknameUser"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="emailAddress"
+                        android:background="@drawable/border_input_register_center"
+                        android:drawableStart="@drawable/icon_person"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/code_grey_normal"
+                        android:fontFamily="@font/dosis_regular"
+                        android:hint="@string/nickname"
+                        android:inputType="textEmailAddress"
+                        android:padding="16dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/code_grey_normal"
+                        android:textSize="16sp" />
+
+                    <EditText
                         android:id="@+id/inputRegisterEmail"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"

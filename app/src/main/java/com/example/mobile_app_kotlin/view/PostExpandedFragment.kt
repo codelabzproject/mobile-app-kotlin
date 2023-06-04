@@ -58,9 +58,16 @@ class PostExpandedFragment : Fragment() {
         cardPost = CardPostFragment(postViewModel)
 
         val listener = object : CommentListener {
-            override fun onClickLikeComment(position: Int, idPost: Int) {
-                cardPost.onLikeButtonClick(idPost, loginViewModel.loadUserIdLogged())
-                postViewModel.getPostById(loginViewModel.loadUserIdLogged())
+            override fun onClickLikeComment(position: Int, idComment: Int) {
+                postViewModel.setLikeComment(idComment, loginViewModel.loadUserIdLogged())
+
+                postViewModel.risePostModel.removeObservers(viewLifecycleOwner)
+                postViewModel.riseCommentModel.observe(viewLifecycleOwner) { riseModel ->
+                    val comment = commentAdapter.getItem(position)
+                    comment.likes = riseModel.postPointTotal
+//                    comment.userHasVoted = riseModel.userHasVoted
+                    commentAdapter.notifyItemChanged(position)
+                }
             }
         }
         commentAdapter.attachListener(listener)
@@ -86,21 +93,6 @@ class PostExpandedFragment : Fragment() {
         buttonPublicComment.setOnClickListener {
             createComment(view)
         }
-
-//        val fabButton = view.findViewById<FloatingActionButton>(R.id.button_add_new_post)
-//        fabButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_timelineFragment_to_createPostActivity)
-//        }
-//
-//        val profileCard = view.findViewById<LinearLayout>(R.id.profile_home_resumed)
-//        profileCard.setOnClickListener {
-//            findNavController().navigate(R.id.action_timelineFragment_to_userProfileFragment)
-//        }
-//
-//        val seeHighTopics = view.findViewById<LinearLayout>(R.id.buttonSeeHighTopics)
-//        seeHighTopics.setOnClickListener {
-//            findNavController().navigate(R.id.action_timelineFragment_to_topicFragment)
-//        }
     }
 
     private fun createComment(view: View) {

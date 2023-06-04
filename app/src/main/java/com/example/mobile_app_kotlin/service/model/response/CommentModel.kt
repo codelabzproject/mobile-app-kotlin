@@ -16,7 +16,7 @@ class CommentModel(
     val content: String,
 
     @SerializedName("likes")
-    val likes: Int,
+    var likes: Int,
 
 //    @SerializedName("createdIn")
 //    val createdIn: String

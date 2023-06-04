@@ -68,6 +68,8 @@
     <string name="error_intern">Erro interno</string>
     <string name="error_in_servidor">Erro no servidor</string>
     <string name="insert_one_comment_before_continue">Insira um comentário antes de continuar</string>
+    <string name="nickname">Nickname</string>
+    <string name="insert_all_camps_to_continue">Preencha todos os campos para continuar</string>
 
 
 </resources>
