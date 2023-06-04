@@ -18,19 +18,33 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+//    signingConfigs {
+//        release {
+//            // Configure suas informações de assinatura
+//            keyAlias 'seu_alias_de_chave'
+//            keyPassword 'sua_senha_de_chave'
+//            storeFile file('caminho_para_seu_keystore')
+//            storePassword 'sua_senha_de_armazenamento'
+//        }
+//    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
         }
+
         profile {
             initWith debug
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -38,6 +52,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
     kapt {
         correctErrorTypes true
     }
