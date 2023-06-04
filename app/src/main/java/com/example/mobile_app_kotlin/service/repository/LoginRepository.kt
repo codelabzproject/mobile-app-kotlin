@@ -13,7 +13,8 @@ class LoginRepository(context: Context) : BaseRepository(context) {
     private val remote = RetrofitClient.getService(LoginService::class.java, context)
 
     fun loginUser(email: String, password: String, listener: APIListener<UserModel>) {
-        val userRequest = UserRequest("lucas.lacerda@bandtec.com.br", "12345678")
+        val userRequest = UserRequest(email, password)
+//        val userRequest = UserRequest("lucas.lacerda@bandtec.com.br", "12345678")
 
 //        if (!isConnectionAvailable()) {
 //            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
