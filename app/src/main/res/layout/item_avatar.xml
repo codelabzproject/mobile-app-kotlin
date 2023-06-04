@@ -3,12 +3,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/avatarImageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
-        android:layout_margin="8dp"
-        android:src="@drawable/icon_smile"/>
+    <LinearLayout
+        android:id="@+id/layoutItemAvatar"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_avatar_selected"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/avatarImageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:layout_margin="8dp"
+            android:src="@drawable/icon_smile"/>
+
+    </LinearLayout>
 
 </LinearLayout>

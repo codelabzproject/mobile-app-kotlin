@@ -26,9 +26,11 @@ class AvatarViewHolder(
     fun setSelected(selected: Boolean) {
         if (selected) {
             val context = itemBinding.root.context
-            val selectedColor = ContextCompat.getColor(context, R.color.code_blue_normal)
-            itemBinding.avatarImageView.setBackgroundColor(selectedColor)
+            val selectedColor = ContextCompat.getDrawable(context, R.drawable.border_avatar_selected)
+            itemBinding.layoutItemAvatar.background = selectedColor
+//            itemBinding.avatarImageView.setBackgroundColor(selectedColor)
         } else {
+            itemBinding.layoutItemAvatar.setBackgroundColor(0)
             itemBinding.avatarImageView.setBackgroundColor(0) // Remove a cor de fundo
         }
     }

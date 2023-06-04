@@ -70,6 +70,9 @@
     <string name="insert_one_comment_before_continue">Insira um comentário antes de continuar</string>
     <string name="nickname">Nickname</string>
     <string name="insert_all_camps_to_continue">Preencha todos os campos para continuar</string>
+    <string name="register_sucess">Cadastro efetuado com sucesso!</string>
+    <string name="select_avatar_first_time">Antes da gente continuar, vamos selecionar seu avatar?</string>
+    <string name="update_your_avatar">Atualize aqui seu avatar</string>
 
 
 </resources>

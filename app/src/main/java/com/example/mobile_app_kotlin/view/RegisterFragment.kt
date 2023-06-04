@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.mobile_app_kotlin.R
+import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
@@ -78,8 +79,10 @@ class RegisterFragment : Fragment() {
     private fun observe() {
         viewModel.user.observe(viewLifecycleOwner) {
             if (it.status()) {
-                findNavController().navigate(R.id.action_registerFragment_to_selectAvatarFragment)
-                Toast.makeText(context, "Cadastro efetuado com sucesso!", Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putBoolean(CodeConstants.AUX.isCreatePage, true)
+                findNavController().navigate(R.id.action_registerFragment_to_selectAvatarFragment, bundle)
+                Toast.makeText(context, getString(R.string.register_sucess), Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, it.message(), Toast.LENGTH_SHORT).show()
 

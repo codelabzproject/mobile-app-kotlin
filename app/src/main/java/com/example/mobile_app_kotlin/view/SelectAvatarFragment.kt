@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -24,12 +25,11 @@ class SelectAvatarFragment : Fragment() {
 
     private var selectedAvatarIndex: Int = -1
 
-
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var userViewModel: UserViewModel
 
-    private lateinit var cardPost: CardPostFragment
+    private var isCreatePage: Boolean = false
 
     private var _binding: FragmentSelectAvatarBinding? = null
     private val binding get() = _binding!!
@@ -40,10 +40,19 @@ class SelectAvatarFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val bundle = arguments
+        if (bundle != null) {
+            isCreatePage = bundle.getBoolean(CodeConstants.AUX.isCreatePage)
+        }
+
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
@@ -62,6 +71,12 @@ class SelectAvatarFragment : Fragment() {
 //        loginViewModel.loadUserName()
 
         observe()
+
+        binding.textWelcomeAvatar.text = if (isCreatePage) {
+            getString(R.string.select_avatar_first_time)
+        } else {
+            getString(R.string.update_your_avatar)
+        }
 
         return binding.root
     }
@@ -86,16 +101,24 @@ class SelectAvatarFragment : Fragment() {
 
                 userViewModel.getUser(registerViewModel.loadUserIdCreated())
 
-                findNavController().navigate(R.id.action_selectAvatarFragment_to_timelineActivity)
-//                findNavController().clearBackStack(R.id.action_selectAvatarFragment_to_loginFragment)
+                if (isCreatePage) {
+                    Toast.makeText(
+                        context, "Seu avatar foi salvo com sucesso",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.action_selectAvatarFragment_to_timelineActivity)
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Seu avatar foi atualizado com sucesso",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().popBackStack()
+                }
+
 
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-//        postViewModel.getPosts(loginViewModel.loadUserIdLogged())
     }
 
     private fun observe() {

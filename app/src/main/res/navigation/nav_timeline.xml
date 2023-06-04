@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_userProfileFragment_to_postExpandedFragment"
             app:destination="@id/postExpandedFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_configFragment"
+            app:destination="@id/configFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
@@ -72,4 +75,18 @@
             android:id="@+id/action_topicExpandedFragment_to_postExpandedFragment"
             app:destination="@id/postExpandedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/configFragment"
+        android:name="com.example.mobile_app_kotlin.view.ConfigFragment"
+        android:label="fragment_config"
+        tools:layout="@layout/fragment_config" >
+        <action
+            android:id="@+id/action_configFragment_to_selectAvatarFragment2"
+            app:destination="@id/selectAvatarFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectAvatarFragment2"
+        android:name="com.example.mobile_app_kotlin.view.SelectAvatarFragment"
+        android:label="fragment_select_avatar"
+        tools:layout="@layout/fragment_select_avatar" />
 </navigation>

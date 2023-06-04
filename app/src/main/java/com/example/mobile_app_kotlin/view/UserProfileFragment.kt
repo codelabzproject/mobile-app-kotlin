@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -83,6 +85,11 @@ class UserProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val buttonConfig = view.findViewById<ImageButton>(R.id.buttonConfigProfile)
+        buttonConfig.setOnClickListener {
+            findNavController().navigate(R.id.action_userProfileFragment_to_configFragment)
+        }
     }
 
     override fun onResume() {

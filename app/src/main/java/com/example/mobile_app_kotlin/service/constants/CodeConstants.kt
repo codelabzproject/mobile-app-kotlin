@@ -45,4 +45,10 @@ class CodeConstants private constructor() {
         const val avatar10 = "https://raw.githubusercontent.com/codelabzproject/public/main/imgpng/avatar10.png"
     }
 
+
+    object AUX {
+        const val isCreatePage = "isCreatePage"
+
+    }
+
 }

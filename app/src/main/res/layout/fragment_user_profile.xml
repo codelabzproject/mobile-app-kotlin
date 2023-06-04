@@ -130,6 +130,7 @@
                         android:background="@drawable/border_cards">
 
                         <ImageButton
+                            android:id="@+id/buttonConfigProfile"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
