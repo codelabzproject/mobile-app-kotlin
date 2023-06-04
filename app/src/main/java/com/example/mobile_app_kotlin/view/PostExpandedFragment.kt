@@ -61,7 +61,7 @@ class PostExpandedFragment : Fragment() {
             override fun onClickLikeComment(position: Int, idComment: Int) {
                 postViewModel.setLikeComment(idComment, loginViewModel.loadUserIdLogged())
 
-                postViewModel.risePostModel.removeObservers(viewLifecycleOwner)
+                postViewModel.riseCommentModel.removeObservers(viewLifecycleOwner)
                 postViewModel.riseCommentModel.observe(viewLifecycleOwner) { riseModel ->
                     val comment = commentAdapter.getItem(position)
                     comment.likes = riseModel.postPointTotal
