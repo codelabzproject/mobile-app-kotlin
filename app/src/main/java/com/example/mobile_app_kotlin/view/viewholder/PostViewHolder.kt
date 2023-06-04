@@ -53,6 +53,8 @@ class PostViewHolder(
         itemBinding.likePostButton.setOnClickListener {
             postListener?.onClickLikeButton(adapterPosition, postModel.idPost)
         }
+
+
     }
 
     fun onClickPost() {

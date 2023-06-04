@@ -22,36 +22,21 @@ open class BaseRepository(val context: Context) {
     fun <T> executeCall(call: Call<T>, listener: APIListener<T>) {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                if (response.isSuccessful) {
 
-                    if (response.code() == CodeConstants.HTTP.SUCCESS || response.code() == CodeConstants.HTTP.CREATED) {
-                        response.body()?.let { listener.onSuccess(it) }
-                    } else if (response.code() == CodeConstants.HTTP.BADREQUEST) {
-                        Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT)
-                            .show()
-                    } else {
+                if (response.code() == CodeConstants.HTTP.SUCCESS || response.code() == CodeConstants.HTTP.CREATED || response.code() == CodeConstants.HTTP.EMPTY) {
+                    response.body()?.let { listener.onSuccess(it) }
+                } else if (response.code() == CodeConstants.HTTP.BADREQUEST) {
+                    Toast.makeText(context, context.getString(R.string.verify_infos_request), Toast.LENGTH_SHORT)
+                        .show()
+                } else {
 //                    listener.onFailure(failResponse(response.message()))
 //                    listener.onFailure(failResponse(response.errorBody()!!.string()))
-                        Toast.makeText(context, "Erro interno", Toast.LENGTH_SHORT).show()
-
-                    }
-                } else {
-                    val errorBody = response.errorBody()
-                    if (errorBody != null) {
-                        val errorString = errorBody.string()
-                        listener.onFailure(errorString)
-                        Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT)
-                            .show()
-                    } else {
-                        listener.onFailure("Error body is null")
-                        Toast.makeText(context, "Verifique as informações", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                    Toast.makeText(context, context.getString(R.string.error_intern), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
-                Toast.makeText(context, "Erro no servidor", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.error_in_servidor), Toast.LENGTH_SHORT).show()
                 listener.onFailure(context.getString(R.string.ERROR_UNEXPECTED))
             }
         })

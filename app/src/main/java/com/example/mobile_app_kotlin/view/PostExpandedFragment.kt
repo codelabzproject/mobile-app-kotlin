@@ -58,7 +58,7 @@ class PostExpandedFragment : Fragment() {
 
         val listener = object : CommentListener {
             override fun onClickLikeComment(position: Int, idPost: Int) {
-                postViewModel.setLikePost(idPost, loginViewModel.loadUserIdLogged())
+                cardPost.onLikeButtonClick(idPost, loginViewModel.loadUserIdLogged())
                 postViewModel.getPostById(loginViewModel.loadUserIdLogged())
             }
         }
@@ -153,7 +153,7 @@ class PostExpandedFragment : Fragment() {
             binding.postExpandedFragment.nameTopic.text = postExpandedModel.topic.name
 
             Picasso.get()
-            .load(postExpandedModel.topic.image)
+                .load(postExpandedModel.topic.image)
                 .into(binding.postExpandedFragment.svgTopicPost)
 
             val imageLike = if (postExpandedModel.userHasVoted) {

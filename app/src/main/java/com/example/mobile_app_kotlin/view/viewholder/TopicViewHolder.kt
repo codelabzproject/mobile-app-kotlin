@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 
 class TopicViewHolder(
     private val itemBinding: TopicItemLayoutBinding,
-    private val postListener: TopicListener?,
+    private val topicListener: TopicListener?,
     private val context: Context,
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
@@ -23,8 +23,7 @@ class TopicViewHolder(
 
     fun onClickTopic() {
         itemBinding.root.setOnClickListener {
-            postListener?.onClickTopic(adapterPosition)
+            topicListener?.onClickTopic(adapterPosition)
         }
     }
-
 }

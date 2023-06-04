@@ -19,8 +19,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     private val postRepository = PostRepository(application.applicationContext)
     val securityPreferences = SecurityPreferences(application.applicationContext)
 
-    private val _posts = MutableLiveData<List<PostModel>>()
-    val posts: LiveData<List<PostModel>> = _posts
+    private val _listPosts = MutableLiveData<List<PostModel>>()
+    val listPosts: LiveData<List<PostModel>> = _listPosts
 
     private val _postExpanded = MutableLiveData<PostExpandedModel>()
     val postExpanded: LiveData<PostExpandedModel> = _postExpanded
@@ -29,7 +29,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     val post: LiveData<PostModel> = _post
 
     private val _risePostModel = MutableLiveData<RiseModel>()
-    val risePostModel: LiveData<RiseModel> = _risePostModel
+    var risePostModel: LiveData<RiseModel> = _risePostModel
 
     private val _riseCommentModel = MutableLiveData<RiseModel>()
     val riseCommentModel: LiveData<RiseModel> = _riseCommentModel
@@ -42,7 +42,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     fun getPosts(idUser: Int) {
         postRepository.getPosts(idUser, object : APIListener<List<PostModel>> {
             override fun onSuccess(result: List<PostModel>) {
-                _posts.value = result.asReversed()
+                _listPosts.value = result.asReversed()
             }
 
             override fun onFailure(message: String) {}
@@ -55,6 +55,18 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         postRepository.getPostById(idPost, object : APIListener<PostExpandedModel> {
             override fun onSuccess(result: PostExpandedModel) {
                 _postExpanded.value = result
+            }
+
+            override fun onFailure(message: String) {}
+        }
+        )
+
+    }
+
+    fun getPostsByIdTopic(idTopic: Int, idUser: Int) {
+        postRepository.getPostsByIdTopic(idTopic, idUser, object : APIListener<List<PostModel>> {
+            override fun onSuccess(result: List<PostModel>) {
+                _listPosts.value = result
             }
 
             override fun onFailure(message: String) {}

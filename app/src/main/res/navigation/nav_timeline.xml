@@ -54,5 +54,14 @@
         android:id="@+id/topicFragment"
         android:name="com.example.mobile_app_kotlin.view.TopicFragment"
         android:label="fragment_topic"
-        tools:layout="@layout/fragment_topic" />
+        tools:layout="@layout/fragment_topic" >
+        <action
+            android:id="@+id/action_topicFragment_to_topicExpandedFragment"
+            app:destination="@id/topicExpandedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicExpandedFragment"
+        android:name="com.example.mobile_app_kotlin.view.TopicExpandedFragment"
+        android:label="fragment_topic_expanded"
+        tools:layout="@layout/fragment_topic_expanded" />
 </navigation>

@@ -21,6 +21,12 @@ interface PostService {
         @Path(value = "idPost", encoded = true) idPost: Int
     ): Call<PostExpandedModel>
 
+    @GET("posts/pesquisa/mobile/{idTopic}/{idUser}")
+    fun getPostsByIdTopic(
+        @Path(value = "idTopic", encoded = true) idTopic: Int,
+        @Path(value = "idUser", encoded = true) idUser: Int,
+    ): Call<List<PostModel>>
+
     @POST("posts")
     fun createDiscussion(
         @Body createPostRequest: CreatePostRequest,

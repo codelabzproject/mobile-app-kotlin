@@ -43,5 +43,6 @@
     <color name="spinner_text_color">#FFFFFFFF</color>
     <color name="spinner_dropdown_text_color">#FFFFFFFF</color>
 
+    <color name="transparent">#00FFFFFF</color>
 
 </resources>

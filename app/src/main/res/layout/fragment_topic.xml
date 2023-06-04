@@ -39,6 +39,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/list_topics_followeds_by_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"

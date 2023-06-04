@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_app_kotlin.databinding.TopicItemLayoutBinding
 import com.example.mobile_app_kotlin.service.listener.TopicListener
+import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.TopicModel
 import com.example.mobile_app_kotlin.view.viewholder.TopicViewHolder
 
@@ -30,9 +31,13 @@ class TopicAdapter : RecyclerView.Adapter<TopicViewHolder>() {
 
         holder.onClickTopic()
 
-        holder.itemView.setOnClickListener {
-            updateSelectedPosition(position)
-        }
+//        holder.itemView.setOnClickListener {
+//            updateSelectedPosition(position)
+//        }
+    }
+
+    fun getItem(position: Int): TopicModel {
+        return listTopics[position]
     }
 
     fun updateTopics(list: List<TopicModel>) {

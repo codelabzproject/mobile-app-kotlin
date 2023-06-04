@@ -6,17 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
-import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
 import com.example.mobile_app_kotlin.databinding.FragmentTopicBinding
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.TopicListener
-import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.view.adapter.TopicAdapter
-import com.example.mobile_app_kotlin.viewmodel.PostViewModel
 import com.example.mobile_app_kotlin.viewmodel.TopicViewModel
-import com.squareup.picasso.Picasso
 
 class TopicFragment : Fragment() {
 
@@ -36,7 +33,9 @@ class TopicFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         topicViewModel.getTopics()
-        topicViewModel.getTopicsByUser(topicViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt())
+        topicViewModel.getTopicsByUser(
+            topicViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt()
+        )
     }
 
     override fun onCreateView(
@@ -53,14 +52,30 @@ class TopicFragment : Fragment() {
         binding.recyclerAllTopics.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllTopics.adapter = adapterAllTopics
 
-        val listener = object : TopicListener {
+        val listenerAllTopics = object : TopicListener {
             override fun onClickTopic(position: Int) {
-                TODO("Not yet implemented")
+                val bundle = Bundle()
+                bundle.putInt("topicId", adapterAllTopics.getItem(position).idTopic)
+                findNavController().navigate(
+                    R.id.action_topicFragment_to_topicExpandedFragment,
+                    bundle
+                )
             }
         }
 
-        adapterTopicsByUser.attachListener(listener)
-        adapterAllTopics.attachListener(listener)
+        val listenerFollowedsTopics = object : TopicListener {
+            override fun onClickTopic(position: Int) {
+                val bundle = Bundle()
+                bundle.putInt("topicId", adapterTopicsByUser.getItem(position).idTopic)
+                findNavController().navigate(
+                    R.id.action_topicFragment_to_topicExpandedFragment,
+                    bundle
+                )
+            }
+        }
+
+        adapterAllTopics.attachListener(listenerAllTopics)
+        adapterTopicsByUser.attachListener(listenerFollowedsTopics)
 
         observe()
 
@@ -75,6 +90,12 @@ class TopicFragment : Fragment() {
 
         topicViewModel.topicsByUser.observe(viewLifecycleOwner) {
             adapterTopicsByUser.updateTopics(it)
+
+            if (it.isEmpty()) {
+                binding.listTopicsFollowedsByUser.visibility = View.GONE
+            } else {
+                binding.listTopicsFollowedsByUser.visibility = View.VISIBLE
+            }
         }
     }
 }

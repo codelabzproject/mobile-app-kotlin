@@ -17,9 +17,9 @@ class TopicModel {
     @ColumnInfo(name = "name")
     var name: String? = null
 
-//    @SerializedName("about")
-//    @ColumnInfo(name = "about")
-//    var about: String? = null
+    @SerializedName("about")
+    @ColumnInfo(name = "about")
+    var about: String? = null
 
 //    @SerializedName("createdAt")
 //    @ColumnInfo(name = "createdAt")
@@ -29,8 +29,12 @@ class TopicModel {
     @ColumnInfo(name = "png")
     var image: String? = null
 
-//    @SerializedName("countFollowers")
-//    @ColumnInfo(name = "countFollowers")
-//    var countFollowers: Int = 0
+    @SerializedName("countFollowers")
+    @ColumnInfo(name = "countFollowers")
+    var countFollowers: Int = 0
+
+    @SerializedName("userHasFollowed")
+    @ColumnInfo(name = "userHasFollowed")
+    var userHasFollowed: Boolean = false
 
 }

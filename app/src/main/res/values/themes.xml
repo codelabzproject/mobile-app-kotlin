@@ -13,4 +13,8 @@
         <item name="android:statusBarColor">@color/code_background_black</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TransparentButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_follow_topic</item>
+    </style>
 </resources>

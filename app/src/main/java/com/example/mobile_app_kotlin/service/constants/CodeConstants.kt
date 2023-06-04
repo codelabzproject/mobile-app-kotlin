@@ -22,22 +22,12 @@ class CodeConstants private constructor() {
     object HTTP {
         const val SUCCESS = 200
         const val CREATED = 201
+        const val EMPTY = 204
         const val BADREQUEST = 404
     }
 
-    object BUNDLE {
-        const val TASKID = "taskid"
-        const val CODEFILTER = "codefilter"
+    object TOPIC {
+        const val TOPIC_ID = "topic_id"
+        const val TOPIC_NAME = "topic_name"
     }
-
-    private val GITHUB_API_BASE_URL = "https://api.github.com/"
-
-
-    // Filtro de tarefas
-    object FILTER {
-        const val ALL = 0
-        const val NEXT = 1
-        const val EXPIRED = 2
-    }
-
 }

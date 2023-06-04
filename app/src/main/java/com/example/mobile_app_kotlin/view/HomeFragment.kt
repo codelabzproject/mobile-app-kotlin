@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentHomeBinding
-import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
@@ -68,14 +67,6 @@ class HomeFragment : Fragment() {
                     loginViewModel.loadUserIdLogged()
                 )
                 postViewModel.getPosts(loginViewModel.loadUserIdLogged())
-
-//                postViewModel.riseModel.observe(viewLifecycleOwner) { riseModel ->
-//                    val post = adapter.getItem(position)
-//                    post.points = riseModel.postPointTotal
-//                    post.userHasVoted = riseModel.userHasVoted
-//                    adapter.notifyItemChanged(position)
-//                    postViewModel.riseModel.removeObservers(viewLifecycleOwner)
-//                }
             }
         }
 
@@ -121,7 +112,7 @@ class HomeFragment : Fragment() {
                 .into(binding.avatarUser)
         }
 
-        postViewModel.posts.observe(viewLifecycleOwner) { posts ->
+        postViewModel.listPosts.observe(viewLifecycleOwner) { posts ->
             adapter.updatePosts(posts)
         }
     }

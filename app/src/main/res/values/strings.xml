@@ -62,10 +62,11 @@
     <string name="qtd_comentarios">%s comentários</string>
     <string name="algum_dia">algum dia</string>
 
-    <string-array name="topics_array">
-        <item>Flutter</item>
-        <item>React</item>
-        <item>MySQL</item>
-    </string-array>
+    <string name="posts_in_topic_title_empty">Este tópico não tem nenhum post ainda...</string>
+    <string name="posts_in_topic_message_empty">Mas você pode ser o primeiro a postar</string>
+    <string name="verify_infos_request">Verifique as informações</string>
+    <string name="error_intern">Erro interno</string>
+    <string name="error_in_servidor">Erro no servidor</string>
+
 
 </resources>

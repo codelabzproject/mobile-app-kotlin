@@ -73,6 +73,16 @@ class PostRepository(context: Context) : BaseRepository(context) {
 //        }
 
         executeCall(remote.getPostById(idPost), listener)
+    }    
+    
+    fun getPostsByIdTopic(idTopic: Int, idUser: Int, listener: APIListener<List<PostModel>>) {
+
+//        if (!isConnectionAvailable()) {
+//            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+//            return
+//        }
+
+        executeCall(remote.getPostsByIdTopic(idTopic, idUser), listener)
     }
 
     fun setLikePost(idPost: Int, idUser: Int, listener: APIListener<RiseModel>) {
