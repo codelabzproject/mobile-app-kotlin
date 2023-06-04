@@ -84,6 +84,8 @@
                                 android:background="@color/transparent"
                                 android:fontFamily="@font/dosis_semi_bold"
                                 android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
                                 android:text="Seguir"
                                 android:textAllCaps="false"
                                 android:textColor="@color/code_white_normal"
