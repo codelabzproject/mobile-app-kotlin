@@ -86,10 +86,10 @@ class LoginFragment : Fragment() {
             login(view)
         }
 
-        val githubLoginButton = view.findViewById<ImageView>(R.id.button_login_with_github)
-        githubLoginButton.setOnClickListener {
-            iniciarAutenticacaoGitHub()
-        }
+//        val githubLoginButton = view.findViewById<ImageView>(R.id.button_login_with_github)
+//        githubLoginButton.setOnClickListener {
+//            iniciarAutenticacaoGitHub()
+//        }
 
         observe()
     }
@@ -139,16 +139,16 @@ class LoginFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val uri = activity?.intent?.data
-        if (uri != null && uri.toString().startsWith(GITHUB_REDIRECT_URI)) {
-            val code = uri.getQueryParameter("code")
-            if (code != null) {
-                solicitarTokenAcesso(code)
-            } else {
-                // O usuário cancelou a autenticação
-                // Lide com o cancelamento de acordo com sua lógica
-            }
-        }
+//        val uri = activity?.intent?.data
+//        if (uri != null && uri.toString().startsWith(GITHUB_REDIRECT_URI)) {
+//            val code = uri.getQueryParameter("code")
+//            if (code != null) {
+//                solicitarTokenAcesso(code)
+//            } else {
+//                // O usuário cancelou a autenticação
+//                // Lide com o cancelamento de acordo com sua lógica
+//            }
+//        }
     }
 
     private fun solicitarTokenAcesso(code: String) {
