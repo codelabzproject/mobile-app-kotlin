@@ -6,7 +6,6 @@ import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentCardComentarioBinding
 import com.example.mobile_app_kotlin.service.listener.CommentListener
 import com.example.mobile_app_kotlin.service.model.response.CommentModel
-import com.example.mobile_app_kotlin.service.model.response.PostModel
 import com.example.mobile_app_kotlin.service.model.response.RiseModel
 import com.squareup.picasso.Picasso
 
@@ -36,8 +35,7 @@ class CommentViewHolder(
             .into(itemBinding.imageUserComment)
 
         Picasso.get()
-            .load(R.drawable.heart_like_icon)
-//            .load("https://raw.githubusercontent.com/codelabzproject/public/main/img/avatar1.png")
+            .load(R.drawable.icon_heart_disabled)
             .into(itemBinding.likeIconButton)
 
     }

@@ -6,21 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
 import com.example.mobile_app_kotlin.databinding.FragmentUserProfileBinding
 import com.example.mobile_app_kotlin.service.constants.CodeConstants
 import com.example.mobile_app_kotlin.service.listener.PostListener
 import com.example.mobile_app_kotlin.view.adapter.PostAdapter
+import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
+import com.example.mobile_app_kotlin.viewmodel.PostViewModel
 import com.example.mobile_app_kotlin.viewmodel.UserViewModel
 import com.squareup.picasso.Picasso
 
 class UserProfileFragment : Fragment() {
     private lateinit var userViewModel: UserViewModel
+    private lateinit var postViewModel: PostViewModel
+    private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
     private val postAdapter = PostAdapter()
-//    private var taskFilter = 0
+
+    private lateinit var cardPost: CardPostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +37,40 @@ class UserProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
 
         binding.recyclerAllPosts.layoutManager = LinearLayoutManager(context)
         binding.recyclerAllPosts.adapter = postAdapter
 
+        cardPost = CardPostFragment(postViewModel, postAdapter)
+
         val listener = object : PostListener {
             override fun onClickPost(position: Int) {
+                val bundle = Bundle()
+                bundle.putInt("postId", postAdapter.getItem(position).idPost)
+                findNavController().navigate(
+                    R.id.action_userProfileFragment_to_postExpandedFragment,
+                    bundle
+                )
             }
 
             override fun onClickLikeButton(position: Int, idPost: Int) {
+                postViewModel.risePostModel.removeObservers(viewLifecycleOwner)
+
+                cardPost.onLikeButtonClick(
+                    idPost,
+                    loginViewModel.loadUserIdLogged()
+                )
+
+                postViewModel.risePostModel.observe(viewLifecycleOwner) { riseModel ->
+                    val post = postAdapter.getItem(position)
+                    post.points = riseModel.postPointTotal
+                    post.userHasVoted = riseModel.userHasVoted
+                    postAdapter.notifyItemChanged(position)
+                }
             }
 
         }

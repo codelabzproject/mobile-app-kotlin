@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +17,6 @@ import com.example.mobile_app_kotlin.view.adapter.PostAdapter
 import com.example.mobile_app_kotlin.viewmodel.LoginViewModel
 import com.example.mobile_app_kotlin.viewmodel.PostViewModel
 import com.example.mobile_app_kotlin.viewmodel.TopicViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 
 class TopicExpandedFragment : Fragment() {
@@ -74,6 +72,12 @@ class TopicExpandedFragment : Fragment() {
 
         val listener = object : PostListener {
             override fun onClickPost(position: Int) {
+                val bundle = Bundle()
+                bundle.putInt("postId", postAdapter.getItem(position).idPost)
+                findNavController().navigate(
+                    R.id.action_topicExpandedFragment_to_postExpandedFragment,
+                    bundle
+                )
             }
 
             override fun onClickLikeButton(position: Int, idPost: Int) {

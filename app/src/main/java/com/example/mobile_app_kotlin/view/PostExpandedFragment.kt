@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_app_kotlin.R
@@ -110,14 +111,20 @@ class PostExpandedFragment : Fragment() {
         val idPost: Int
         */
 
-        val createComment =
-            CreateCommentRequest(
-                comment,
-                postViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt(),
-                postViewModel.postExpanded.value?.idPost ?: 0,
-            )
+        if (comment.isEmpty() || comment.isBlank()) {
+            Toast.makeText(context, getString(R.string.insert_one_comment_before_continue), Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            val createComment =
+                CreateCommentRequest(
+                    comment,
+                    postViewModel.securityPreferences.get(CodeConstants.SHARED.USER_ID).toInt(),
+                    postViewModel.postExpanded.value?.idPost ?: 0,
+                )
 
-        postViewModel.createComment(createComment)
+            postViewModel.createComment(createComment)
+        }
+
     }
 
 
@@ -127,6 +134,10 @@ class PostExpandedFragment : Fragment() {
 
             binding.postExpandedFragment.titlePost.text = postExpandedModel.title
             binding.postExpandedFragment.contentPost.text = postExpandedModel.content
+
+            Picasso.get()
+                .load(loginViewModel.loadAvatarPng())
+                .into(binding.avatarUser)
 
             binding.postExpandedFragment.countLikes.text = if (postExpandedModel.points >= 0) {
                 postExpandedModel.points.toString()
@@ -180,7 +191,7 @@ class PostExpandedFragment : Fragment() {
         postViewModel.commentModel.observe(viewLifecycleOwner) { commentModel ->
             postViewModel.postExpanded.value?.comments?.add(commentModel)
             postViewModel.postExpanded.value?.comments?.let { commentAdapter.updateComments(it) }
-
+            binding.editNewComment.text = null
         }
     }
 }
