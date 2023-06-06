@@ -44,7 +44,7 @@ interface PostService {
         @Path("idUser", encoded = true) idUser: Int,
     ): Call<RiseModel>
 
-    @PUT("posts/comment/{idComment}/{idUser}")
+    @PUT("posts/comment/like/mobile/{idComment}/{idUser}")
     fun likeComment(
         @Path("idComment", encoded = true) idComment: Int,
         @Path("idUser", encoded = true) idUser: Int,

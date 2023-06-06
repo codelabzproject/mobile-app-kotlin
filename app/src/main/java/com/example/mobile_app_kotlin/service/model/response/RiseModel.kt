@@ -6,6 +6,9 @@ class RiseModel(
     @SerializedName("postPointTotal")
     val postPointTotal: Int,
 
+    @SerializedName("quantLikes")
+    val qtdLikes: Int? = null,
+
     @SerializedName("userHasVoted")
     var userHasVoted: Boolean,
 )

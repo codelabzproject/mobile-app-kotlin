@@ -64,7 +64,7 @@ class PostExpandedFragment : Fragment() {
                 postViewModel.riseCommentModel.removeObservers(viewLifecycleOwner)
                 postViewModel.riseCommentModel.observe(viewLifecycleOwner) { riseModel ->
                     val comment = commentAdapter.getItem(position)
-                    comment.likes = riseModel.postPointTotal
+                    comment.likes = riseModel.qtdLikes ?: comment.likes
 //                    comment.userHasVoted = riseModel.userHasVoted
                     commentAdapter.notifyItemChanged(position)
                 }
