@@ -37,9 +37,9 @@ class PostViewHolder(
         itemBinding.nameTopic.text = postModel.topic?.name
 
         val imageLike = if (postModel.userHasVoted) {
-            R.drawable.like_up_enable
+            R.drawable.icon_upvote_enabled
         } else {
-            R.drawable.like_up_disabled
+            R.drawable.icon_upvote_disabled
         }
         itemBinding.likePostButton.setImageResource(imageLike)
 

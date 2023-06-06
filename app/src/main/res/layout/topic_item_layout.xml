@@ -20,8 +20,7 @@
                 android:id="@+id/image_topic"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/vector_flutter_icon" />
+                android:layout_gravity="center" />
 
             <TextView
                 android:id="@id/name_topic"

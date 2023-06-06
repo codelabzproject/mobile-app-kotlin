@@ -160,9 +160,9 @@ class PostExpandedFragment : Fragment() {
                 .into(binding.postExpandedFragment.svgTopicPost)
 
             val imageLike = if (postExpandedModel.userHasVoted) {
-                R.drawable.like_up_enable
+                R.drawable.icon_upvote_enabled
             } else {
-                R.drawable.like_up_disabled
+                R.drawable.icon_upvote_disabled
             }
             binding.postExpandedFragment.likePostButton.setImageResource(imageLike)
 
@@ -173,9 +173,9 @@ class PostExpandedFragment : Fragment() {
         postViewModel.risePostModel.observe(viewLifecycleOwner) { riseModel ->
             binding.postExpandedFragment.countLikes.text = riseModel.postPointTotal.toString()
             val imageLike = if (riseModel.userHasVoted) {
-                R.drawable.like_up_enable
+                R.drawable.icon_upvote_enabled
             } else {
-                R.drawable.like_up_disabled
+                R.drawable.icon_upvote_disabled
             }
             binding.postExpandedFragment.likePostButton.setImageResource(imageLike)
         }

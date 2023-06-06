@@ -36,8 +36,7 @@
                         android:id="@+id/imageUserComment"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_gravity="top|center"
-                        android:src="@drawable/profile_picture" />
+                        android:layout_gravity="top|center" />
                 </LinearLayout>
 
                 <View

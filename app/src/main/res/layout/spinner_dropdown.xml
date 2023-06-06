@@ -8,8 +8,7 @@
     <ImageView
         android:id="@+id/iconImageView"
         android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/vector_flutter_icon" />
+        android:layout_height="24dp" />
 
     <TextView
         android:id="@+id/titleTextView"
